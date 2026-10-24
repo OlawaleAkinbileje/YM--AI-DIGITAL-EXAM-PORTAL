@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment Result | YEYE MOREMI OODUA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ymo-green: #044e39;
+      --ymo-green-light: #065f46;
+      --ymo-green-dark: #022c22;
+      --ymo-gold: #d97706;
+      --ymo-gold-light: #f59e0b;
+      --bg: #0f172a;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --passed-color: #16a34a;
+      --failed-color: #dc2626;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #032d22 0%, #064e3b 40%, #0f172a 90%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 16px;
+    }
+
+    .result-container {
+      max-width: 820px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .result-container {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+    }
+
+    /* Left Visual Hero Showcase */
+    .hero-side {
+      position: relative;
+      background: linear-gradient(135deg, #022c22 0%, #044e39 100%);
+      color: #ffffff;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      min-height: 400px;
+    }
+    .hero-bg-img {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: saturate(1.2) contrast(1.1);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(2, 44, 34, 0.6) 0%, rgba(4, 78, 57, 0.85) 60%, rgba(2, 44, 34, 0.96) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .pill-pass {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid #4ade80;
+      color: #bbf7d0;
+    }
+    .pill-retake {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid #fbbf24;
+      color: #fef08a;
+    }
+    .pill-exhausted {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #f87171;
+      color: #fecaca;
+    }
+
+    .hero-headline {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.4px;
+    }
+    .hero-desc {
+      font-size: 13.5px;
+      color: #d1fae5;
+      line-height: 1.55;
+    }
+
+    .hero-bottom-quote {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 16px;
+      font-size: 12px;
+      color: #a7f3d0;
+      font-style: italic;
+    }
+
+    /* Right Performance Card */
+    .card-body {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1.5px solid var(--ymo-gold);
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.18);
+    }
+    .hub-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--ymo-green);
+    }
+    .exam-tag {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .candidate-profile-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+    }
+    .candidate-photo-frame {
+      width: 76px;
+      height: 76px;
+      min-width: 76px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2.5px solid var(--ymo-gold);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+      background: #e2e8f0;
+    }
+    .candidate-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .candidate-info-block {
+      flex: 1;
+      min-width: 0;
+    }
+    .student-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .candidate-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0 6px 0;
+    }
+    .reg-badge {
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ymo-green);
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .track-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #065f46;
+      background: #d1fae5;
+      border: 1px solid #a7f3d0;
+      padding: 2px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .exam-title-row {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .exam-title-row strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Performance Score Box */
+    .score-banner {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .score-circle {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin: 8px 0;
+    }
+    .passed { color: var(--passed-color); }
+    .failed { color: var(--failed-color); }
+
+    .score-breakdown {
+      font-size: 14.5px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .status-verdict {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+    .status-note {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .history-box {
+      font-size: 13px;
+      color: #334155;
+      background: #f1f5f9;
+      border-left: 3px solid var(--ymo-green);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 18px;
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14.5px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-retake {
+      background: linear-gradient(135deg, var(--ymo-gold) 0%, #b45309 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+    .btn-retake:hover {
+      background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+      transform: translateY(-1px);
+    }
+    .btn-print {
+      background: #ecfdf5;
+      color: var(--ymo-green);
+      border: 1px solid #a7f3d0;
+    }
+    .btn-print:hover {
+      background: #d1fae5;
+    }
+    .btn-portal {
+      background: #f8fafc;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-portal:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    /* Print Styles */
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .result-container { box-shadow: none; border: 1px solid #000; }
+      .hero-side { display: none; }
+      .result-container { grid-template-columns: 1fr; }
+      .btn-group { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="result-container">
+
+  <!-- Left Visual Showcase based on status -->
+  <div class="hero-side">
+    {% if locked_out %}
+      <img src="/static/img/exam_study_hero.jpg" alt="Assessment Completion" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-status-pill pill-exhausted">🏁 Attempts Completed</div>
+        <h1 class="hero-headline">Assessment Journey Concluded</h1>
+        <p class="hero-desc">You have completed all permitted attempts for this digital training module. Your official performance record has been registered with the academy facilitators.</p>
+      </div>
+      <div class="hero-bottom-quote">
+        "Continuous improvement and persistence are the true marks of technological mastery."
+      </div>
+    {% elif passed %}
+      <img src="/static/img/exam_achievement_hero.jpg" alt="Achievement Distinction" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-status-pill pill-pass">🏆 Benchmark Achieved</div>
+        <h1 class="hero-headline">Congratulations, Certified Achiever!</h1>
+        <p class="hero-desc">You have demonstrated high competence and successfully cleared the academy's rigorous assessment benchmark. Keep excelling in your digital learning track.</p>
+      </div>
+      <div class="hero-bottom-quote">
+        "Empowering African talent with future-ready skills."
+      </div>
+    {% else %}
+      <img src="/static/img/exam_study_hero.jpg" alt="Focused Review" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-status-pill pill-retake">📖 Knowledge in Progress</div>
+        <h1 class="hero-headline">Every Step Builds Mastery</h1>
+        <p class="hero-desc">You are developing crucial technical competencies. Review your course materials and take advantage of your available retake opportunity to attain the passing mark.</p>
+      </div>
+      <div class="hero-bottom-quote">
+        "Mastery is built through consistent review, iteration, and practice."
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Right Assessment Score & Actions Card -->
+  <div class="card-body">
+    <div class="brand-header">
+      <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" class="logo-badge">
+      <div>
+        <div class="hub-tag">YEYE MOREMI OODUA TRAINING HUB</div>
+        <div class="exam-tag">{{ settings.title }}</div>
+      </div>
+    </div>
+
+    <!-- Candidate Official Identification Card -->
+    <div class="candidate-profile-card">
+      <div class="candidate-photo-frame">
+        {% if student_id %}
+          <img src="/student/passport/{{ student_id }}" 
+               alt="{{ first_name }} {{ last_name }}" 
+               class="candidate-photo-img"
+               onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ first_name }}+{{ last_name }}&background=044e39&color=fef08a&size=160&bold=true';">
+        {% elif passport_url %}
+          <img src="{{ passport_url }}" 
+               alt="{{ first_name }} {{ last_name }}" 
+               class="candidate-photo-img"
+               onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ first_name }}+{{ last_name }}&background=044e39&color=fef08a&size=160&bold=true';">
+        {% else %}
+          <img src="https://ui-avatars.com/api/?name={{ first_name }}+{{ last_name }}&background=044e39&color=fef08a&size=160&bold=true" 
+               alt="{{ first_name }} {{ last_name }}" 
+               class="candidate-photo-img">
+        {% endif %}
+      </div>
+      <div class="candidate-info-block">
+        <h2 class="student-name">{{ first_name }} {{ last_name }}</h2>
+        <div class="candidate-meta-row">
+          {% if reg_number %}
+            <span class="reg-badge">ID: {{ reg_number }}</span>
+          {% endif %}
+          <span class="track-badge" title="Permanent Enrolled Track">🎯 Primary Track: {{ course_track or course_code or 'Digital Track' }}</span>
+        </div>
+        <div class="exam-title-row">
+          Assessment Sat For: <strong>{{ settings.title }}</strong>{% if exam_track_name and exam_track_name != course_track %} <span style="font-size: 11.5px; color: #b45309; font-weight: 700; background: #fef3c7; padding: 1px 6px; border-radius: 4px;">({{ exam_track_name }})</span>{% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if locked_out %}
+      <div class="score-banner">
+        <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #dc2626; letter-spacing: 0.5px; margin-bottom: 4px;">
+          Maximum Allowed Attempts Reached (2 of 2)
+        </div>
+        <div class="score-circle {{ 'passed' if passed else 'failed' }}">
+          {{ percentage }}%
+        </div>
+        <div class="score-breakdown">
+          Final Recorded Score: <strong>{{ score }}</strong> / {{ total }} marks
+        </div>
+        <div class="status-verdict {{ 'passed' if passed else 'failed' }}">
+          {% if passed %}✅ Final Status: PASSED{% else %}❌ Final Status: CUTOFF NOT MET{% endif %}
+        </div>
+      </div>
+
+      <div class="history-box">
+        Official Submission: Your highest confirmed score of <strong>{{ score }}/{{ total }} ({{ percentage }}%)</strong> has been recorded in the facilitator gradebook.
+      </div>
+
+      <div class="btn-group">
+        <button type="button" onclick="window.print()" class="btn btn-print">🖨️ Print Result Slip</button>
+        <a href="/" class="btn btn-portal">Return to Portal Choice</a>
+      </div>
+
+    {% else %}
+
+      {% set cutoff_val = settings.passing_cutoff|float %}
+      <div class="score-banner">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 4px;">
+          <span>ATTEMPT {{ attempt_number }} OF 2</span>
+          <span>CUTOFF: {{ settings.passing_cutoff }}%</span>
+        </div>
+        <div class="score-circle {{ 'passed' if percentage >= cutoff_val else 'failed' }}">
+          {{ percentage }}%
+        </div>
+        <div class="score-breakdown">
+          You scored <strong>{{ score }}</strong> out of <strong>{{ total }} marks</strong>
+        </div>
+        {% if passed %}
+          <div class="status-verdict passed">
+            🎉 Status: PASSED & CERTIFIED
+          </div>
+          <div class="status-note">
+            Congratulations! You satisfied the required {{ settings.passing_cutoff }}% benchmark.
+          </div>
+        {% else %}
+          <div class="status-verdict failed">
+            ⚠️ Status: CUTOFF NOT MET
+          </div>
+          {% set req_marks = ((total * cutoff_val / 100) | round(0, 'ceil')) | int %}
+          <div class="status-note">
+            Passing benchmark is {{ settings.passing_cutoff }}% ({{ req_marks }} / {{ total }} marks).
+          </div>
+        {% endif %}
+      </div>
+
+      {% if attempt_number == 2 and best_percentage is defined %}
+        <div class="history-box">
+          📈 Grade Progression: Your highest score across both attempts is <strong>{{ best_score }} / {{ total }} ({{ best_percentage }}%)</strong>.
+        </div>
+      {% endif %}
+
+      <div class="btn-group">
+        {% if can_retake %}
+          <a href="/exam" class="btn btn-retake">Take Your 1 Retake Chance Now →</a>
+        {% else %}
+          <p style="font-size: 12.5px; color: #64748b; text-align: center; margin-bottom: 4px;">
+            Assessment completed. Your grade has been transmitted to cohort facilitators.
+          </p>
+        {% endif %}
+        <button type="button" onclick="window.print()" class="btn btn-print">🖨️ Print Result Slip</button>
+        <a href="/" class="btn btn-portal">Back to Assessment Choice</a>
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+</body>
+</html>

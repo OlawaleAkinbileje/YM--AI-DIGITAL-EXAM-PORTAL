@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "e1_q1",
+    "exam_id": 1,
+    "number": 1,
+    "question": "A campus food-delivery logo is recognisable at poster size but becomes an indistinct blob as a profile icon. Which test should guide the revision?",
+    "options": {
+      "A": "Add more fancy details to preserve the original concept",
+      "B": "Simplify the overall shape and test readability at small sizes",
+      "C": "Increase the number of colours so parts remain visible",
+      "D": "Use a thinner font to create more space"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q2",
+    "exam_id": 1,
+    "number": 2,
+    "question": "A flyer contains a headline, date, venue, price, and call to action (call to action (call to action (CTA))). Viewers remember the venue but miss the offer. Which explanation is strongest?",
+    "options": {
+      "A": "The venue should be removed because details are never useful",
+      "B": "The colour set must be expanded to make the flyer lively",
+      "C": "The order of importance gives secondary information too much visual weight",
+      "D": "The call to action (call to action (call to action (CTA))) should be made smaller than all supporting text"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q3",
+    "exam_id": 1,
+    "number": 3,
+    "question": "Two colour pairs both match a brand style. Pair A is well-matched but the body text is hard to read; Pair B is slightly less well-matched but clearly legible. What is the best decision?",
+    "options": {
+      "A": "Choose Pair B or adjust Pair A until difference in light and dark and readability are adequate",
+      "B": "Choose Pair A because harmony always outranks readability",
+      "C": "Use both pairs on the same graphic without a system",
+      "D": "Let the AI choose based on which sounds more professional"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q4",
+    "exam_id": 1,
+    "number": 4,
+    "question": "A client requests a square post, but the approved text is too long. What should the designer do first?",
+    "options": {
+      "A": "Reduce all text until it fits, regardless of reading size",
+      "B": "Delete the call to action (call to action (call to action (CTA))) and publish the rest",
+      "C": "Add more fancy elements to fill the layout",
+      "D": "Edit for message priority, shorten text without changing facts, then test the layout"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q5",
+    "exam_id": 1,
+    "number": 5,
+    "question": "A learner uses one display font for the headline and another fancy font for body text. Why is this likely to fail?",
+    "options": {
+      "A": "Two fonts can never be used in one design",
+      "B": "The roles compete and reduce readability; use distinct but compatible roles",
+      "C": "The headline must always be in a serif font",
+      "D": "The body text should be the largest element"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q6",
+    "exam_id": 1,
+    "number": 6,
+    "question": "A poster looks balanced when zoomed in but crowded on a phone. Which check is most useful?",
+    "options": {
+      "A": "Check the design only at 200% zoom",
+      "B": "Add shadows to every text element",
+      "C": "Preview at the size people will actually see and improve text size, spacing, and difference in light and dark",
+      "D": "download at the largest possible file size"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q7",
+    "exam_id": 1,
+    "number": 7,
+    "question": "A brand guide describes the brand as calm, dependable, and welcoming, but uses chaotic spacing and aggressive type. What should be checked?",
+    "options": {
+      "A": "Whether the visual choices express the intended personality consistently",
+      "B": "Whether the file has enough pages",
+      "C": "Whether AI used advanced vocabulary",
+      "D": "Whether the design includes every available Canva element"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q8",
+    "exam_id": 1,
+    "number": 8,
+    "question": "AI proposes the claim “delivery in 10 minutes” for Moremi Express, but no service data supports it. What should the learner do?",
+    "options": {
+      "A": "Keep it as an aspirational slogan",
+      "B": "Add an asterisk without explanation",
+      "C": "Use it only in a small font",
+      "D": "Remove or verify the claim and use approved information only"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q9",
+    "exam_id": 1,
+    "number": 9,
+    "question": "A learner has two plausible layouts. What is the best way to choose between them?",
+    "options": {
+      "A": "Choose whichever took less time, without inspection",
+      "B": "Compare both against the design instructions, audience, order of importance, readability, and call to action (call to action (call to action (CTA))) visibility",
+      "C": "Choose the one with more effects",
+      "D": "Ask AI which is objectively best and follow it"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q10",
+    "exam_id": 1,
+    "number": 10,
+    "question": "A heading appears uneven because the space between two specific letters is too tight. Which adjustment is most precise?",
+    "options": {
+      "A": "line spacing",
+      "B": "letter spacing across the whole paragraph",
+      "C": "space between two letters between the letter pair",
+      "D": "Canvas dimensions"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q11",
+    "exam_id": 1,
+    "number": 11,
+    "question": "Body text is difficult to scan because lines sit too close together. Which change addresses the problem directly?",
+    "options": {
+      "A": "Adjust line spacing/line spacing and recheck paragraph length",
+      "B": "Change only the filename",
+      "C": "Increase letter spacing on the headline",
+      "D": "Replace all shapes with icons"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q12",
+    "exam_id": 1,
+    "number": 12,
+    "question": "A flyer has a strong headline and attractive image but no clear next step. What should be added?",
+    "options": {
+      "A": "Another fancy slogan",
+      "B": "A verified, clear and action-focused call to action (call to action (call to action (CTA))) placed within the order of importance",
+      "C": "More brand colours",
+      "D": "A second headline of equal size"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q13",
+    "exam_id": 1,
+    "number": 13,
+    "question": "A photo of food is cropped so the meal is visible but the text overlays the busiest part of the image. What is the best correction?",
+    "options": {
+      "A": "Increase the text effects until it dominates",
+      "B": "Remove the headline",
+      "C": "Use a more suitable crop or quiet text area and check difference in light and dark",
+      "D": "Add more words over the image"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q14",
+    "exam_id": 1,
+    "number": 14,
+    "question": "The design meets the two-colour design instructions, but a red call to action (call to action (call to action (CTA))) disappears against a similar-toned background. What does this show?",
+    "options": {
+      "A": "A colour set rule alone does not guarantee sufficient difference in light and dark",
+      "B": "Two-colour palettes are always unsuitable",
+      "C": "CTAs should not use colour",
+      "D": "The only fix is adding five more colours"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q15",
+    "exam_id": 1,
+    "number": 15,
+    "question": "Which evidence best shows that a learner made independent design decisions when using AI?",
+    "options": {
+      "A": "They used the longest AI prompt",
+      "B": "They copied the first generated layout",
+      "C": "They can explain specific changes against the design instructions and show the final Canva finished design",
+      "D": "They submitted ten generated concepts without selecting one"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q16",
+    "exam_id": 1,
+    "number": 16,
+    "question": "A logo looks elegant in a wide header but becomes unreadable when placed in a small circular profile icon. What should be prepared?",
+    "options": {
+      "A": "A version made suitable for small-scale use, tested in the intended crop",
+      "B": "A larger download only",
+      "C": "A third font",
+      "D": "A full paragraph inside the profile icon"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q17",
+    "exam_id": 1,
+    "number": 17,
+    "question": "A flyer has inconsistent margins and elements almost touch the edge. Which improvement is most best?",
+    "options": {
+      "A": "Add more border decorations",
+      "B": "Use consistent safe margins and internal spacing, then check all edges",
+      "C": "Move every element to the centre regardless of order of importance",
+      "D": "Shrink the canvas until the edges disappear"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q18",
+    "exam_id": 1,
+    "number": 18,
+    "question": "A designer is asked to create a flyer for a campus health screening. Which content decision should be made before styling?",
+    "options": {
+      "A": "Which animation transition looks trendy",
+      "B": "Which fancy font is most unusual",
+      "C": "Which message, audience, verified details, and action the flyer must communicate",
+      "D": "Which download setting creates the largest file"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q19",
+    "exam_id": 1,
+    "number": 19,
+    "question": "A heading is readable on a laptop but not on a projected or printed version. What should the designer do?",
+    "options": {
+      "A": "Test the actual output size and revise type size, weight, difference in light and dark, and spacing",
+      "B": "Assume screen readability guarantees print readability",
+      "C": "Add more text to explain the heading",
+      "D": "Change only the file name"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q20",
+    "exam_id": 1,
+    "number": 20,
+    "question": "A peer says “make it pop” but gives no actionable detail. What is the best follow-up?",
+    "options": {
+      "A": "Add random effects until the peer approves",
+      "B": "Ask which specific issue—order of importance, difference in light and dark, spacing, or focal point—needs improvement",
+      "C": "Change the entire design without review",
+      "D": "Ignore all peer feedback"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q21",
+    "exam_id": 1,
+    "number": 21,
+    "question": "A bakery flyer contains a price, but the source information is outdated. What should happen before download?",
+    "options": {
+      "A": "Make the price smaller",
+      "B": "Ask AI to estimate a replacement",
+      "C": "Publish and correct it if customers complain",
+      "D": "Verify the current price or omit it"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q22",
+    "exam_id": 1,
+    "number": 22,
+    "question": "Which design is strongest for a social graphic intended to explain a process?",
+    "options": {
+      "A": "A single dense paragraph with fancy background",
+      "B": "A clear sequence with concise steps, consistent alignment, and readable type",
+      "C": "Five competing headlines",
+      "D": "An image with no explanatory labels"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q23",
+    "exam_id": 1,
+    "number": 23,
+    "question": "A designer is choosing between a template and a blank canvas. What should determine the choice?",
+    "options": {
+      "A": "Whether the template fits the objective and can be adapted without compromising the design instructions",
+      "B": "Whether the template requires no decisions",
+      "C": "Whether the blank canvas is always more professional",
+      "D": "Whether the template contains the most elements"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q24",
+    "exam_id": 1,
+    "number": 24,
+    "question": "A brand guide uses two fonts consistently, but both are difficult to read in small text. What is the best evaluation?",
+    "options": {
+      "A": "Consistency means the board is automatically successful",
+      "B": "Only the headline matters",
+      "C": "Retest font suitability at intended sizes and put first readable supporting type",
+      "D": "Use the same two fonts but make every text line bold"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q25",
+    "exam_id": 1,
+    "number": 25,
+    "question": "An AI tool suggests a trendy design style unrelated to the audience. What should the learner do?",
+    "options": {
+      "A": "Adopt it because current trends always perform better",
+      "B": "Use the trend only if it supports the design instructions and audience; otherwise reject it",
+      "C": "Change the audience to match the suggestion",
+      "D": "Submit the AI description instead of a design"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q26",
+    "exam_id": 1,
+    "number": 26,
+    "question": "Which review sequence is most effective before publishing a promotional flyer?",
+    "options": {
+      "A": "Effects, animations, filename, then content",
+      "B": "colour set first and no other checks",
+      "C": "download immediately, then ask whether the facts were right",
+      "D": "Check design instructions and facts, order of importance, readability, spacing, call to action (call to action (call to action (CTA))), and final file size and shape"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q27",
+    "exam_id": 1,
+    "number": 27,
+    "question": "A poster’s smaller heading attracts attention before the headline. What is the most likely issue?",
+    "options": {
+      "A": "The order of importance is giving the wrong the intended order people read the content",
+      "B": "The canvas is necessarily the wrong shape",
+      "C": "The design needs more fonts",
+      "D": "The call to action (call to action (call to action (CTA))) is too accurate"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q28",
+    "exam_id": 1,
+    "number": 28,
+    "question": "A student uses a photograph from an unknown online source. What should be checked?",
+    "options": {
+      "A": "Whether the photo has enough saturation only",
+      "B": "Whether it matches the headline colour",
+      "C": "permission to use the image, relevance, quality, and suitable crop",
+      "D": "Whether AI can claim ownership"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q29",
+    "exam_id": 1,
+    "number": 29,
+    "question": "A client wants “premium” branding, but the target audience needs fast access to practical information. What should guide the design?",
+    "options": {
+      "A": "Use luxury effects even if details are hard to find",
+      "B": "Balance the intended brand tone with audience needs and task clarity",
+      "C": "Remove all practical information",
+      "D": "Use the most expensive-looking template without review"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q30",
+    "exam_id": 1,
+    "number": 30,
+    "question": "A social graphic is attractive but users cannot identify what is being offered. What should be revised first?",
+    "options": {
+      "A": "Add texture to the background",
+      "B": "Make the logo larger than the offer",
+      "C": "Clarify the core message and make it prominent",
+      "D": "Add several unrelated icons"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q31",
+    "exam_id": 1,
+    "number": 31,
+    "question": "Which statement best distinguishes margin from padding in a layout?",
+    "options": {
+      "A": "Margin is space outside an element; padding is space between its content and its boundary",
+      "B": "They always mean exactly the same thing",
+      "C": "Padding is the space between letters",
+      "D": "Margin only applies to photos"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q32",
+    "exam_id": 1,
+    "number": 32,
+    "question": "A design uses a font that supports the the feeling the brand should give but lacks some characters needed for the text. What is the best response?",
+    "options": {
+      "A": "Remove the missing characters from the text",
+      "B": "Use it regardless of rendering",
+      "C": "Check whether the font includes the needed letters and symbols and select a compatible readable alternative if needed",
+      "D": "Convert the whole flyer into a photograph"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q33",
+    "exam_id": 1,
+    "number": 33,
+    "question": "Which prompt is most likely to produce useful design concepts?",
+    "options": {
+      "A": "Make something cool",
+      "B": "Create a professional design with no constraints",
+      "C": "text a famous brand exactly",
+      "D": "Suggest three simple flyer directions for campus food delivery, state audience and message, avoid invented claims, and explain layout rationale"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q34",
+    "exam_id": 1,
+    "number": 34,
+    "question": "A learner changes colours, fonts, image, and text simultaneously after poor feedback. Why is this a weak testing method?",
+    "options": {
+      "A": "It makes the design more consistent",
+      "B": "It is difficult to identify which change improved or harmed the result",
+      "C": "It prevents exporting",
+      "D": "It guarantees no learning"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q35",
+    "exam_id": 1,
+    "number": 35,
+    "question": "A flyer’s call to action (call to action (call to action (CTA))) is visible but asks users to visit a link that has not been confirmed. What is the best practice?",
+    "options": {
+      "A": "Keep it because every flyer needs a link",
+      "B": "Replace it with a made-up URL",
+      "C": "Use a verified contact or ordering route, or hold publication until confirmed",
+      "D": "Make the link smaller"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q36",
+    "exam_id": 1,
+    "number": 36,
+    "question": "A design is visually balanced but its headline, supporting details, and call to action (call to action (call to action (CTA))) all look equally important. What is missing?",
+    "options": {
+      "A": "A clear order of importance",
+      "B": "A second colour set",
+      "C": "A larger download file",
+      "D": "More fancy icons"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q37",
+    "exam_id": 1,
+    "number": 37,
+    "question": "Which is the best basis for choosing an image for a campaign?",
+    "options": {
+      "A": "Choose the first image in search results",
+      "B": "Select an image that fits the audience, message, quality, rights, and layout",
+      "C": "Choose the most colourful image regardless of relevance",
+      "D": "Use an image even if it contradicts the offer"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q38",
+    "exam_id": 1,
+    "number": 38,
+    "question": "The same campaign must be adapted to a poster and a square social post. What should remain consistent?",
+    "options": {
+      "A": "Every element’s exact position and size",
+      "B": "The identical crop even if content is cut off",
+      "C": "The core message and brand style, while layout adapts to each format",
+      "D": "All text must remain the same size"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q39",
+    "exam_id": 1,
+    "number": 39,
+    "question": "Which is the best evidence for assessment for a final branded graphic?",
+    "options": {
+      "A": "A polished image only, with no explanation",
+      "B": "A list of definitions",
+      "C": "A screenshot of AI output only",
+      "D": "The final finished design plus a rationale linking choices to audience, objective, order of importance, and verified content"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q40",
+    "exam_id": 1,
+    "number": 40,
+    "question": "A learner has 30 minutes to improve a weak flyer. What should be put first?",
+    "options": {
+      "A": "Fix the highest-impact communication failures first: message, order of importance, readability, and call to action (call to action (call to action (CTA)))",
+      "B": "Perfect tiny fancy details first",
+      "C": "Add more effects before checking text",
+      "D": "Rebuild everything from scratch without explanation"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q41",
+    "exam_id": 1,
+    "number": 41,
+    "question": "A social graphic is being resized from square to a tall story format. Which approach best preserves communication quality?",
+    "options": {
+      "A": "Stretch the square artwork vertically until it fills the canvas",
+      "B": "Keep all objects at identical coordinates even if text overlaps",
+      "C": "Recompose the layout for the new aspect ratio while preserving the message and order of importance",
+      "D": "Remove the headline to make the resize easier"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q42",
+    "exam_id": 1,
+    "number": 42,
+    "question": "A food photograph is visually strong but its colours clash with the established brand colour set. What is the best design judgement?",
+    "options": {
+      "A": "Use it unchanged because photography must never be adjusted",
+      "B": "Assess whether a suitable crop or restrained treatment can harmonise it without showing inaccurately the food",
+      "C": "Replace the brand colour set with the photograph's colours automatically",
+      "D": "Cover most of the photo with fancy shapes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q43",
+    "exam_id": 1,
+    "number": 43,
+    "question": "A flyer includes a QR code, but it has not been tested after download. What should happen before distribution?",
+    "options": {
+      "A": "Test the exported QR code on a phone and confirm that it leads to the intended destination",
+      "B": "Increase its fancy border only",
+      "C": "Assume it works because it appears sharp",
+      "D": "Add a second untested QR code"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q44",
+    "exam_id": 1,
+    "number": 44,
+    "question": "A headline is concise, but the supporting text repeats the same idea three times. What is the strongest revision?",
+    "options": {
+      "A": "Make the headline longer",
+      "B": "Increase the font size of every paragraph",
+      "C": "Add another slogan to fill space",
+      "D": "Remove redundant text while retaining necessary details and the next step"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q45",
+    "exam_id": 1,
+    "number": 45,
+    "question": "A designer uses a low-resolution logo that looks blurred in print. Which corrective action is best?",
+    "options": {
+      "A": "Sharpen it repeatedly until it appears scalable-based",
+      "B": "Obtain a suitable high-quality or scalable logo asset and inspect the final download",
+      "C": "Enlarge the blurred image further",
+      "D": "Place a shadow behind it"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q46",
+    "exam_id": 1,
+    "number": 46,
+    "question": "A layout has consistent alignment but feels monotonous. What is the best next change?",
+    "options": {
+      "A": "Randomly rotate elements",
+      "B": "Break all alignment rules",
+      "C": "Introduce controlled variation in scale or emphasis while retaining a clear grid",
+      "D": "Add a different font to every text block"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q47",
+    "exam_id": 1,
+    "number": 47,
+    "question": "A design contains a fancy script font for a long paragraph. What is the main concern?",
+    "options": {
+      "A": "The font may reduce readability over extended text; use a more legible face for body text",
+      "B": "Script fonts are forbidden in all design",
+      "C": "The paragraph must always be italic",
+      "D": "fancy type automatically improves order of importance"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q48",
+    "exam_id": 1,
+    "number": 48,
+    "question": "A learner downloads a graphic with the wrong dimensions for the intended platform. What should be checked first?",
+    "options": {
+      "A": "Whether the headline uses a serif font",
+      "B": "Whether the background has enough effects",
+      "C": "Whether the logo is centred",
+      "D": "The platform's required format and dimensions, then the composition at that size"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q49",
+    "exam_id": 1,
+    "number": 49,
+    "question": "A client asks for a “modern” design but gives no further direction. What should the designer do?",
+    "options": {
+      "A": "Assume modern means neon gradients",
+      "B": "Clarify the audience, purpose, references, and constraints before committing to a direction",
+      "C": "Use the most popular template immediately",
+      "D": "Let AI decide the whole brand look and feel"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q50",
+    "exam_id": 1,
+    "number": 50,
+    "question": "A promotional graphic is visually consistent but contains a misspelled business name. How should it be assessed?",
+    "options": {
+      "A": "The design is acceptable if the colours are correct",
+      "B": "Spelling is less important than effects",
+      "C": "It fails an essential accuracy check and must be corrected before publication",
+      "D": "Only the caption needs checking"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q51",
+    "exam_id": 1,
+    "number": 51,
+    "question": "An image subject is partly hidden behind a headline. Which response is most appropriate?",
+    "options": {
+      "A": "Adjust the crop or reposition the text to preserve the subject and readability",
+      "B": "Add more text over the subject",
+      "C": "Shrink the whole canvas",
+      "D": "Increase saturation until the subject is clearer"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q52",
+    "exam_id": 1,
+    "number": 52,
+    "question": "A designer has a headline, body text, logo, and call to action (call to action (call to action (CTA))). Which order is generally most useful when establishing order of importance for a promotional post?",
+    "options": {
+      "A": "Logo, body text, fancy detail, then headline",
+      "B": "Every element at the same size",
+      "C": "call to action (call to action (call to action (CTA))) first in all circumstances, regardless of purpose",
+      "D": "put first the main message, then supporting information, with the call to action (call to action (call to action (CTA))) easy to locate"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q53",
+    "exam_id": 1,
+    "number": 53,
+    "question": "A learner selects colours because they are personally attractive, but they do not suit the audience or message. What should guide the changes?",
+    "options": {
+      "A": "Personal taste is the only valid design criterion",
+      "B": "Audience, objective, readability, and intended the feeling the brand should give",
+      "C": "Use all available colours to satisfy different tastes",
+      "D": "Choose the colours with the longest names"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q54",
+    "exam_id": 1,
+    "number": 54,
+    "question": "A template contains a stock photo with a visible watermark. What is the proper response?",
+    "options": {
+      "A": "Crop the watermark out regardless of usage terms",
+      "B": "Reduce the opacity of the watermark",
+      "C": "Use an appropriately licensed, unwatermarked asset or another permitted visual",
+      "D": "Keep it because it proves the image is authentic"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q55",
+    "exam_id": 1,
+    "number": 55,
+    "question": "A design has excellent difference in light and dark but too many unrelated fancy elements. What should be addressed?",
+    "options": {
+      "A": "Remove or reduce elements that compete with the communication objective",
+      "B": "Add stronger shadows",
+      "C": "Change every colour",
+      "D": "Increase the number of fonts"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q56",
+    "exam_id": 1,
+    "number": 56,
+    "question": "A headline uses all caps, tight letter spacing, and a narrow font. It becomes difficult to read. What should the designer test?",
+    "options": {
+      "A": "A more extreme condensed font",
+      "B": "Smaller text so more letters fit",
+      "C": "More letter spacing on every element without previewing",
+      "D": "Adjust font, spacing, case, and scale, then preview at intended size"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q57",
+    "exam_id": 1,
+    "number": 57,
+    "question": "A social graphic is intended to announce an event. Which information should be verified as essential before release?",
+    "options": {
+      "A": "Only the background colour",
+      "B": "Event name, date, time, venue or access route, and the requested action",
+      "C": "The number of shapes used",
+      "D": "Whether AI considers the event exciting"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q58",
+    "exam_id": 1,
+    "number": 58,
+    "question": "A learner uses a photograph of a real person to imply that the person endorses a service. What must be considered?",
+    "options": {
+      "A": "Whether the person's clothing matches the colour set only",
+      "B": "Whether the photo can be made more dramatic",
+      "C": "Permission, context, and whether the design creates a false impression that the person supports the service",
+      "D": "Whether the face can be cropped smaller"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q59",
+    "exam_id": 1,
+    "number": 59,
+    "question": "A design's supporting text is readable but visually detached from the related heading. What adjustment could help?",
+    "options": {
+      "A": "Use placing related items close together and consistent grouping to show the relationship between heading and supporting text",
+      "B": "Make the heading and body identical in size",
+      "C": "Place them on opposite sides of the canvas",
+      "D": "Add a third unrelated heading"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q60",
+    "exam_id": 1,
+    "number": 60,
+    "question": "A learner creates a reusable template for weekly announcements. What feature most improves consistency for future users?",
+    "options": {
+      "A": "Many hidden fancy layers",
+      "B": "Unlabelled text boxes",
+      "C": "A different layout for every announcement",
+      "D": "Clear text roles, consistent spacing, and documented editable areas"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q61",
+    "exam_id": 1,
+    "number": 61,
+    "question": "A client wants a design copied exactly from a competitor's campaign. What is the most professional response?",
+    "options": {
+      "A": "text it and change only the business name",
+      "B": "Use it as a reference for general qualities while creating an original layout and respecting copyright and ownership rules",
+      "C": "Trace the competitor's logo",
+      "D": "Download the competitor's editable source without permission"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q62",
+    "exam_id": 1,
+    "number": 62,
+    "question": "A poster uses pale yellow text on a white background. Which is the most direct fix?",
+    "options": {
+      "A": "Increase the amount of pale yellow text",
+      "B": "Add more pale yellow shapes",
+      "C": "Choose a text/background combination with stronger difference in light and dark and test readability",
+      "D": "Use a smaller font"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q63",
+    "exam_id": 1,
+    "number": 63,
+    "question": "A design appears balanced but the main offer is hidden near the bottom. Which design rule needs another look?",
+    "options": {
+      "A": "order of importance and placement of the primary message",
+      "B": "File naming",
+      "C": "The number of pages in the document",
+      "D": "Whether the image is a PNG"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q64",
+    "exam_id": 1,
+    "number": 64,
+    "question": "A brand guide includes colour values but team members repeatedly choose slightly different shades. What should be added?",
+    "options": {
+      "A": "More colour set colours",
+      "B": "A rule that each designer may improvise",
+      "C": "A note to choose colours by eye",
+      "D": "Exact colour values and simple usage guidance"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q65",
+    "exam_id": 1,
+    "number": 65,
+    "question": "A learner wants to use an AI-generated image of a product that differs from the actual product. What should they do?",
+    "options": {
+      "A": "Use it because generated images are always representative",
+      "B": "Use accurate product imagery or clearly avoid presenting the generated image as a faithful depiction",
+      "C": "Add a logo over the mismatch",
+      "D": "Make the image smaller so differences are harder to see"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q66",
+    "exam_id": 1,
+    "number": 66,
+    "question": "A headline fits the design but uses a vague phrase such as “Something amazing is here.” What should improve?",
+    "options": {
+      "A": "Add more adjectives",
+      "B": "Increase its size without changing the words",
+      "C": "Make the message specific enough for the audience to understand the offer or purpose",
+      "D": "Replace it with a long paragraph"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q67",
+    "exam_id": 1,
+    "number": 67,
+    "question": "A learner creates a flyer with no breathing room around the logo. Why does this matter?",
+    "options": {
+      "A": "Clear space helps protect the logo's readability and separation from surrounding elements",
+      "B": "Logos must always touch the edge",
+      "C": "Clear space only matters in video",
+      "D": "The logo should be hidden"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q68",
+    "exam_id": 1,
+    "number": 68,
+    "question": "A graphic includes an icon that visually resembles a different service from the one being promoted. What should the designer do?",
+    "options": {
+      "A": "Keep it because icons are fancy",
+      "B": "Add more icons to dilute the meaning",
+      "C": "Make the icon smaller but keep it",
+      "D": "Replace it with a relevant visual sign that supports the intended message"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q69",
+    "exam_id": 1,
+    "number": 69,
+    "question": "A designer has two versions: one highly fancy, one simpler and clearer. What evidence should guide the final choice?",
+    "options": {
+      "A": "Which version took longer to create",
+      "B": "Which version communicates the objective more clearly to the intended audience",
+      "C": "Which version has more layers",
+      "D": "Which version uses the most current effects"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q70",
+    "exam_id": 1,
+    "number": 70,
+    "question": "A content graphic is intended for users with colour-vision differences. Which extra step helps?",
+    "options": {
+      "A": "Use colour alone to distinguish every category",
+      "B": "Reduce all difference in light and dark",
+      "C": "Combine colour with labels, icons, patterns, or other cues and maintain readable difference in light and dark",
+      "D": "Make all text the same colour as the background"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q71",
+    "exam_id": 1,
+    "number": 71,
+    "question": "A flyer has a long URL typed in full, making the layout cluttered. What is a practical alternative?",
+    "options": {
+      "A": "Use a verified short link or tested QR code and retain a clear action label",
+      "B": "Invent a shorter domain",
+      "C": "Remove the call to action (call to action (call to action (CTA))) entirely",
+      "D": "Hide the URL in low-difference in light and dark text"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q72",
+    "exam_id": 1,
+    "number": 72,
+    "question": "A learner is preparing a file for print. Which issue should be checked beyond the on-screen appearance?",
+    "options": {
+      "A": "Whether animations are smooth",
+      "B": "Whether the design has a social-media caption",
+      "C": "Whether every element is editable by AI",
+      "D": "download format, image quality, dimensions, and any printer-specific bleed or margin requirements"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q73",
+    "exam_id": 1,
+    "number": 73,
+    "question": "A design uses visual metaphors that may be unfamiliar to its audience. What is the best evaluation?",
+    "options": {
+      "A": "Keep them because unusual metaphors are always memorable",
+      "B": "Check whether the intended audience interprets them as intended; simplify or clarify if needed",
+      "C": "Add more unfamiliar metaphors",
+      "D": "Replace all words with symbols"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q74",
+    "exam_id": 1,
+    "number": 74,
+    "question": "A learner claims a design is accessible because the colours match the brand. What is the strongest response?",
+    "options": {
+      "A": "Brand consistency is the only accessibility requirement",
+      "B": "Accessibility applies only to websites",
+      "C": "Brand fit is useful, but text difference in light and dark, size, order people read the content, and non-colour cues also need review",
+      "D": "A matching colour set guarantees readability"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q75",
+    "exam_id": 1,
+    "number": 75,
+    "question": "A flyer shows a discount badge larger than the product or event name. What should be tested?",
+    "options": {
+      "A": "Whether the badge's importance matches the communication goal and does not distort the order people read the content",
+      "B": "Whether the badge uses a circle",
+      "C": "Whether the discount is in all caps only",
+      "D": "Whether more badges can be added"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q76",
+    "exam_id": 1,
+    "number": 76,
+    "question": "A logo, headline, and call to action (call to action (call to action (CTA))) all use different alignment edges. What improvement is most likely to create cohesion?",
+    "options": {
+      "A": "Make every element circular",
+      "B": "Change the background to a photograph",
+      "C": "Add outlines to all text",
+      "D": "Use a deliberate alignment system and group related elements consistently"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q77",
+    "exam_id": 1,
+    "number": 77,
+    "question": "A design includes a fancy border that makes the space for the main content too narrow. What should happen?",
+    "options": {
+      "A": "Keep it because borders always improve professionalism",
+      "B": "Reduce or remove the border if it harms content space and readability",
+      "C": "Shrink the body text until it fits",
+      "D": "Add another border inside it"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q78",
+    "exam_id": 1,
+    "number": 78,
+    "question": "A learner receives feedback that the design feels “too corporate” for a student event. What is the best response?",
+    "options": {
+      "A": "Replace all text with emojis",
+      "B": "Use random colours and fonts",
+      "C": "Clarify the intended tone and audience, then adjust visual choices while retaining readability",
+      "D": "Ignore the feedback because style is subjective"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q79",
+    "exam_id": 1,
+    "number": 79,
+    "question": "A learner must explain why they used a particular image. Which explanation is strongest?",
+    "options": {
+      "A": "It supports the message and audience, has appropriate rights and quality, and leaves space for readable content",
+      "B": "It was the first image in the search results",
+      "C": "AI selected it so no rationale is needed",
+      "D": "It fills the largest empty area regardless of relevance"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q80",
+    "exam_id": 1,
+    "number": 80,
+    "question": "A design looks correct in Canva but the downloaded file has missing or shifted elements. What should the learner do?",
+    "options": {
+      "A": "Submit the Canva editor view only",
+      "B": "Assume the viewer's device is at fault",
+      "C": "Add more elements and download again without checking",
+      "D": "Inspect the exported file, correct the issue, and reopen the new download before submission"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q81",
+    "exam_id": 1,
+    "number": 81,
+    "question": "A student has limited time and receives ten pieces of feedback. How should revisions be put first?",
+    "options": {
+      "A": "Start with the easiest fancy change",
+      "B": "Address the issues with the greatest effect on accuracy, comprehension, readability, and the objective",
+      "C": "Change all colours first",
+      "D": "Ignore feedback that does not mention a font"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q82",
+    "exam_id": 1,
+    "number": 82,
+    "question": "A client asks for a graphic that looks “professional.” What is the best way to translate that vague request into decisions?",
+    "options": {
+      "A": "Use a black background in every case",
+      "B": "Add a gold gradient and serif font by default",
+      "C": "Clarify audience, purpose, tone, required information, and delivery format, then choose a consistent design style",
+      "D": "Use the most complex template available"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q83",
+    "exam_id": 1,
+    "number": 83,
+    "question": "A graphic contains several small icons that each have a different visual style. What is the best improvement?",
+    "options": {
+      "A": "Use a consistent icon style and consistent size and line style",
+      "B": "Increase all icons to different sizes",
+      "C": "Add drop shadows to only one icon",
+      "D": "Replace text with icons everywhere"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q84",
+    "exam_id": 1,
+    "number": 84,
+    "question": "A learner has selected a font based on the feeling the brand should give but has not checked whether it is available on the intended device or workflow. What should happen?",
+    "options": {
+      "A": "Assume all fonts render identically everywhere",
+      "B": "Convert all text into low-resolution images",
+      "C": "Use a font regardless of licensing or availability",
+      "D": "Check availability, rendering, and permitted use; choose a suitable alternative if necessary"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q85",
+    "exam_id": 1,
+    "number": 85,
+    "question": "A poster has strong order of importance but the event details are outdated. What is the most important conclusion?",
+    "options": {
+      "A": "Good order of importance compensates for inaccurate details",
+      "B": "The design must not be released until the details are verified and corrected",
+      "C": "Only the colour colour set needs review",
+      "D": "Outdated details can remain if the poster looks polished"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q86",
+    "exam_id": 1,
+    "number": 86,
+    "question": "A designer uses a photo covering the whole background photo and places text near the edge. What should be considered?",
+    "options": {
+      "A": "All text should touch the edge for consistency",
+      "B": "Safe areas are needed only for logos",
+      "C": "Keep critical text within safe margins and check how the output may be cropped",
+      "D": "Move every element to the centre regardless of content"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q87",
+    "exam_id": 1,
+    "number": 87,
+    "question": "A learner uses AI to generate five brand directions. Which process shows careful choice?",
+    "options": {
+      "A": "Compare the directions with the design instructions, audience, whether it can be done, and visual consistency before building and testing one",
+      "B": "Choose the longest description",
+      "C": "Use all five directions in one brand guide",
+      "D": "Assume the first result is objective"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q88",
+    "exam_id": 1,
+    "number": 88,
+    "question": "A design's call to action (call to action (call to action (CTA))) is visually prominent but unclear about what happens next. What should be improved?",
+    "options": {
+      "A": "Make it even larger without changing its wording",
+      "B": "Add a fancy arrow only",
+      "C": "Remove all action language",
+      "D": "Use a specific action phrase and ensure the destination or contact route is valid"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q89",
+    "exam_id": 1,
+    "number": 89,
+    "question": "A learner makes an image darker so white text is readable, but the product becomes difficult to see. What is the best next step?",
+    "options": {
+      "A": "Darken it further",
+      "B": "Use a different crop, text panel, gradient, or image treatment that protects both text readability and subject visibility",
+      "C": "Remove the product from the image",
+      "D": "Set all text to white with no testing"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q90",
+    "exam_id": 1,
+    "number": 90,
+    "question": "A set of campaign graphics has consistent colours but different logo proportions and clear space. What should the team use?",
+    "options": {
+      "A": "A rule allowing every designer to resize freely",
+      "B": "A new logo for every format",
+      "C": "Logo-use guidance with approved versions, proportions, and clear-space rules",
+      "D": "A rule to omit the logo from every post"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q91",
+    "exam_id": 1,
+    "number": 91,
+    "question": "A learner says the design is effective because it looks attractive to the creator. What additional evidence is more meaningful?",
+    "options": {
+      "A": "Whether intended viewers can identify the message and next step, alongside checks against the design instructions",
+      "B": "Whether the creator spent many hours on it",
+      "C": "Whether the file contains many layers",
+      "D": "Whether AI praised the design"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q92",
+    "exam_id": 1,
+    "number": 92,
+    "question": "A social post contains an image, a headline, and several paragraphs. It will mostly be viewed on a phone. What should be considered?",
+    "options": {
+      "A": "Use the same dense layout as a printed brochure",
+      "B": "Make all paragraphs bold",
+      "C": "Increase fancy detail around the paragraphs",
+      "D": "Simplify text, establish clear grouping, and test text size and scanning at phone scale"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q93",
+    "exam_id": 1,
+    "number": 93,
+    "question": "A brand colour set has a primary and secondary colour but no guidance on when to use each. What should the learner add?",
+    "options": {
+      "A": "A third primary colour without explanation",
+      "B": "A simple usage rule for backgrounds, text, emphasis, and supporting elements",
+      "C": "A direction to choose colours randomly",
+      "D": "A note that the colour set should change weekly"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q94",
+    "exam_id": 1,
+    "number": 94,
+    "question": "A learner needs to create a series of event posts with different dates and speakers. What should be standardised?",
+    "options": {
+      "A": "Every post must have the exact same content",
+      "B": "Each speaker should use a different brand colour set",
+      "C": "Reusable layout, order of importance, font roles, and brand elements while allowing event-specific details to change",
+      "D": "The date should always be omitted"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q95",
+    "exam_id": 1,
+    "number": 95,
+    "question": "A design's image or symbol used to suggest an idea is attractive but may imply a service capability the business does not offer. What should the learner do?",
+    "options": {
+      "A": "Revise the metaphor so it does not mislead, and verify the meaning against approved service facts",
+      "B": "Keep it because visual metaphors are exempt from accuracy",
+      "C": "Add a smaller disclaimer that no one can read",
+      "D": "Ask AI whether the claim is legally acceptable and publish"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q96",
+    "exam_id": 1,
+    "number": 96,
+    "question": "A learner is asked to critique a peer's flyer fairly. Which feedback is strongest?",
+    "options": {
+      "A": "“This is bad and needs a redesign.”",
+      "B": "“Use more effects.”",
+      "C": "“I prefer my version.”",
+      "D": "Identify a specific issue, explain its effect on the viewer, and suggest a practical revision"
+    },
+    "answer": "D"
+  },
+  {
+    "id": "e1_q97",
+    "exam_id": 1,
+    "number": 97,
+    "question": "A designer creates a thumbnail and a full-size poster from one composition. What should be checked for the thumbnail?",
+    "options": {
+      "A": "Only the download filename",
+      "B": "Whether the message and key visual remain recognisable at the smaller scale",
+      "C": "Whether every small detail is retained",
+      "D": "Whether the poster's paragraph fits unchanged"
+    },
+    "answer": "B"
+  },
+  {
+    "id": "e1_q98",
+    "exam_id": 1,
+    "number": 98,
+    "question": "A flyer uses three different button styles for three CTAs. What is the likely issue?",
+    "options": {
+      "A": "Three CTAs are always required",
+      "B": "The buttons must have different colours",
+      "C": "Inconsistent action styling can confuse priority; simplify CTAs and use a consistent treatment",
+      "D": "The logo should become the only call to action (call to action (call to action (CTA)))"
+    },
+    "answer": "C"
+  },
+  {
+    "id": "e1_q99",
+    "exam_id": 1,
+    "number": 99,
+    "question": "A learner has used a template's stock photo, but it depicts a different product from the actual offer. What is the best action?",
+    "options": {
+      "A": "Replace it with a relevant, accurate visual or clearly non-literal illustration",
+      "B": "Keep it because stock images are generic",
+      "C": "Add more filters to make it abstract",
+      "D": "Hide the product label"
+    },
+    "answer": "A"
+  },
+  {
+    "id": "e1_q100",
+    "exam_id": 1,
+    "number": 100,
+    "question": "A designer is comparing a highly legible layout with a more fashionable but harder-to-read one. Which principle should lead the decision?",
+    "options": {
+      "A": "Fashion always takes priority",
+      "B": "Readability matters only for long documents",
+      "C": "The fashionable layout must be chosen for originality",
+      "D": "The design style should serve the objective and audience; style should not undermine comprehension"
+    },
+    "answer": "D"
+  }
+]

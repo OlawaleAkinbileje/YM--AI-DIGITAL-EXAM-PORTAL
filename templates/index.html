@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Assessment Portal | YEYE MOREMI OODUA AI & DIGITAL TRAINING HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ymo-green: #044e39;
+      --ymo-green-light: #065f46;
+      --ymo-green-dark: #022c22;
+      --ymo-gold: #d97706;
+      --ymo-gold-light: #f59e0b;
+      --ymo-gold-hover: #b45309;
+      --bg: #0f172a;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #032d22 0%, #064e3b 40%, #0f172a 90%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+    }
+
+    /* Container for the 2-Column Split Portal */
+    .portal-container {
+      max-width: 1060px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 880px) {
+      .portal-container {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+      }
+    }
+
+    /* Left Visual / Hero Section */
+    .hero-panel {
+      position: relative;
+      background: linear-gradient(135deg, #022c22 0%, #044e39 100%);
+      color: #ffffff;
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      min-height: 480px;
+    }
+    .hero-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+      filter: saturate(1.15) contrast(1.1);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(2, 44, 34, 0.72) 0%, rgba(4, 78, 57, 0.88) 60%, rgba(2, 44, 34, 0.98) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hub-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #fef08a;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      margin-bottom: 22px;
+    }
+    .hero-headline {
+      font-size: 27px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-headline span {
+      color: #38bdf8;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #d1fae5;
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    /* Track pills grid on hero */
+    .hero-tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .track-tag-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #f1f5f9;
+      font-weight: 600;
+      transition: background 0.15s ease;
+    }
+    .track-tag-item:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+    .track-tag-code {
+      background: var(--ymo-gold);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    /* Hero bottom stats */
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .stat-box {
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 19px;
+      font-weight: 800;
+      color: #fef08a;
+    }
+    .stat-lbl {
+      font-size: 11px;
+      color: #a7f3d0;
+      margin-top: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Right Form Section */
+    .form-panel {
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+    }
+    .form-header-area {
+      margin-bottom: 20px;
+    }
+    .header-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--ymo-gold);
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.2);
+      flex-shrink: 0;
+    }
+    .hub-title-box h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ymo-green);
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .hub-title-box p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* Dynamic Track Badge */
+    .exam-hud-pill {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid var(--ymo-green);
+      padding: 11px 15px;
+      border-radius: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      color: var(--ymo-green-dark);
+      line-height: 1.45;
+    }
+    .exam-hud-pill strong {
+      color: var(--ymo-green);
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .required-star {
+      color: #dc2626;
+      font-weight: 800;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14.5px;
+      outline: none;
+      font-family: inherit;
+      background: #ffffff;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    input[type="text"]:focus, select:focus {
+      border-color: var(--ymo-green);
+      box-shadow: 0 0 0 3px rgba(4, 78, 57, 0.15);
+    }
+    .input-hint {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Start Button */
+    .btn-start {
+      width: 100%;
+      background: linear-gradient(135deg, var(--ymo-green) 0%, #036c4f 100%);
+      color: #ffffff;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15.5px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(4, 78, 57, 0.25);
+      transition: all 0.2s;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-start:hover {
+      background: linear-gradient(135deg, #023627 0%, var(--ymo-green) 100%);
+      box-shadow: 0 6px 18px rgba(4, 78, 57, 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Access Denied Warning */
+    .alert-denied {
+      background: #fef2f2;
+      border: 1.5px solid #fecaca;
+      border-left: 5px solid #dc2626;
+      border-radius: 8px;
+      padding: 13px 15px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);
+      animation: shake 0.3s ease-in-out;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+    .alert-denied-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .alert-denied-content strong {
+      display: block;
+      color: #991b1b;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .alert-denied-content p {
+      margin: 0;
+      color: #7f1d1d;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    .portal-footer {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .portal-footer a {
+      color: var(--ymo-gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .portal-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="portal-container">
+  <!-- Left Side: Human-Centered Visual & Hero Guidance -->
+  <div class="hero-panel">
+    <img src="/static/img/student_exam_hero.jpg" alt="Students writing CBT examination at YMO Hub" class="hero-bg-img">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hub-badge-pill">
+        <span>🎓</span> YEYE MOREMI OODUA TRAINING HUB
+      </div>
+      <h2 class="hero-headline">
+        Empowering Africa's <span>Digital Scholars</span>
+      </h2>
+      <p class="hero-sub">
+        Welcome to the official CBT examination portal. Select your accredited course track, verify your credentials, and sit for your intermediate assessment.
+      </p>
+
+      <div class="hero-tracks">
+        <div class="track-tag-item">
+          <span class="track-tag-code">AIGA</span>
+          <span>Artificial Intelligence & Generative AI</span>
+        </div>
+        <div class="track-tag-item">
+          <span class="track-tag-code">DL</span>
+          <span>Digital Literacy</span>
+        </div>
+        <div class="track-tag-item">
+          <span class="track-tag-code">GDCC</span>
+          <span>Graphic Design & Content Creation</span>
+        </div>
+        <div class="track-tag-item">
+          <span class="track-tag-code">CP</span>
+          <span>Coding & Programming</span>
+        </div>
+        <div class="track-tag-item">
+          <span class="track-tag-code">DM</span>
+          <span>Digital Marketing & Social Media</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-val">5</div>
+        <div class="stat-lbl">Active Tracks</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">60m</div>
+        <div class="stat-lbl">Duration</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">85%</div>
+        <div class="stat-lbl">Pass Cutoff</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Side: Candidate Sign-in & Track Entry Form -->
+  <div class="form-panel">
+    <div>
+      <div class="form-header-area">
+        <div class="header-logo-row">
+          <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" class="logo-img">
+          <div class="hub-title-box">
+            <h1 id="displayTitle">CBT Assessment Portal</h1>
+            <p id="displayCohort">Select your track and enter candidate details to begin</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Access Restriction Warning Banner (if triggered) -->
+      {% if error %}
+      <div class="alert-denied">
+        <div class="alert-denied-icon">🚫</div>
+        <div class="alert-denied-content">
+          <strong>Verification Notice</strong>
+          <p>{{ error }}</p>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Secure Access HUD Banner -->
+      <div class="exam-hud-pill" id="examBadge">
+        🔒 <strong>Candidate Authentication</strong> • Fast & Secure 2-Step Identity Verification
+      </div>
+
+      <form method="POST" action="/start_exam">
+        <div class="form-group">
+          <label for="reg_number">Student Registration Number <span class="required-star">*</span></label>
+          <input type="text" id="reg_number" name="reg_number" required placeholder="e.g. YMO-DL-001 or YMO-AIGA-001" value="{{ reg_number or '' }}" style="text-transform: uppercase; font-family: monospace; letter-spacing: 0.8px; font-weight: 600;" autofocus>
+          <div class="input-hint">
+            Enter your official YMO student ID (supports full ID or track number).
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Surname / Last Name (Password Key) <span class="required-star">*</span></label>
+          <input type="text" id="last_name" name="last_name" required placeholder="Enter your registered Surname" value="{{ last_name or '' }}">
+          <div class="input-hint">
+            🔒 Your registered surname serves as your secure authentication password.
+          </div>
+        </div>
+
+        <button type="submit" class="btn-start">
+          <span>Verify & Select Exam</span>
+          <span>→</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="portal-footer">
+      <span>Official Candidate Assessment Gateway &bull; Yeye Moremi Oodua Academy</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateExamBadge() {
+    const sel = document.getElementById("exam_id");
+    if (!sel || !sel.options || sel.selectedIndex < 0) return;
+    const opt = sel.options[sel.selectedIndex];
+    if (!opt) return;
+
+    const title = opt.getAttribute("data-title") || "Assessment";
+    const cohort = opt.getAttribute("data-cohort") || "";
+    const time = opt.getAttribute("data-time") || "60";
+    const cutoff = opt.getAttribute("data-cutoff") || "85.0";
+    const count = parseInt(opt.getAttribute("data-count"), 10) || 0;
+
+    const reqMarks = Math.ceil(count * (parseFloat(cutoff) / 100));
+
+    document.getElementById("displayTitle").textContent = title;
+    if (cohort) {
+      document.getElementById("displayCohort").textContent = cohort + ". Enter your details to begin.";
+    }
+
+    document.getElementById("badgeTime").textContent = time + " Minutes";
+    document.getElementById("badgeCutoff").textContent = cutoff + "% Pass Mark (" + reqMarks + "/" + count + " marks)";
+    document.getElementById("badgeQuestions").textContent = count + " Questions";
+  }
+
+  document.addEventListener("DOMContentLoaded", updateExamBadge);
+</script>
+
+</body>
+</html>

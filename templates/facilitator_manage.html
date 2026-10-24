@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilitator & Course Track Management | YMO CBT Administration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #044e39;
+      --primary-hover: #033a2a;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --success: #16a34a;
+      --success-bg: #ecfdf5;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1240px; margin: 0 auto; }
+
+    /* Top Navigation Bar */
+    .nav-bar {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .nav-brand span { color: #38bdf8; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .user-tag {
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-logout {
+      background: #dc2626;
+      color: #ffffff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Admin Hero Header */
+    .admin-hero {
+      position: relative;
+      background: linear-gradient(135deg, #022c22 0%, #044e39 60%, #0f172a 100%);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(2, 44, 34, 0.3);
+    }
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(217, 119, 6, 0.25);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fef08a;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 6px;
+    }
+    .hero-desc {
+      font-size: 14px;
+      color: #d1fae5;
+      max-width: 720px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .hero-stats-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 10px 18px;
+      min-width: 130px;
+    }
+    .hero-stat-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .hero-stat-label {
+      font-size: 11.5px;
+      color: #a7f3d0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Flash Alerts */
+    .alert {
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .alert-success { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+    .alert-error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+    /* Action Control Header */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn {
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #b45309 100%);
+      color: #ffffff;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+    }
+    .btn-outline {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+    .btn-danger-outline {
+      background: #ffffff;
+      border-color: #fca5a5;
+      color: #dc2626;
+    }
+    .btn-danger-outline:hover {
+      background: #fef2f2;
+    }
+
+    /* Data Table Card */
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      padding: 12px 18px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border);
+    }
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 13.5px;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fbfcfe; }
+
+    .badge-course {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin: 2px 4px 2px 0;
+      background: #ecfdf5;
+      color: #044e39;
+      border: 1px solid #a7f3d0;
+    }
+    .badge-admin {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-facilitator {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Modal Backdrop & Dialog */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(2px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-dialog {
+      background: #ffffff;
+      border-radius: 12px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+      padding: 28px;
+      position: relative;
+    }
+    .modal-title { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
+    .modal-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; }
+    .btn-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none; border: none;
+      font-size: 22px; cursor: pointer;
+      color: var(--text-muted);
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-control:focus { border-color: var(--primary); }
+    textarea.form-control { resize: vertical; min-height: 70px; }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .course-checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 8px;
+      max-height: 180px;
+      overflow-y: auto;
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+    .course-checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+    }
+
+    /* Responsive Table Wrapper & Mobile Card Layout */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .nav-bar { padding: 12px 16px; }
+      .admin-hero { padding: 20px 18px; }
+      .hero-title { font-size: 20px; }
+      .section-header { flex-direction: column; align-items: stretch; }
+      .btn-group { width: 100%; flex-wrap: wrap; }
+      .btn-group .btn { flex: 1; justify-content: center; }
+
+      /* Mobile Card Transformation for Tables */
+      .responsive-table thead { display: none; }
+      .responsive-table, .responsive-table tbody, .responsive-table tr, .responsive-table td {
+        display: block;
+        width: 100%;
+      }
+      .responsive-table tr {
+        border-bottom: 2px solid #e2e8f0;
+        padding: 12px 14px;
+        background: #ffffff;
+      }
+      .responsive-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 8px 4px;
+        border-bottom: 1px dashed #f1f5f9;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .responsive-table td:last-child { border-bottom: none; padding-top: 10px; justify-content: flex-end; }
+      .responsive-table td::before {
+        content: attr(data-label);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #64748b;
+        letter-spacing: 0.4px;
+        text-align: left;
+        flex-shrink: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Top Navigation Bar (Strict Admin Oversight: Exam/Question bank links excluded) -->
+  <div class="nav-bar">
+    <div class="nav-brand">
+      <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" style="width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid #d97706; object-fit: cover;">
+      <span>YEYE MOREMI OODUA</span> Facilitator &amp; Admin Hub
+    </div>
+    <div class="nav-links">
+      <a href="/instructor" class="nav-link">📊 Candidate Submissions</a>
+      <a href="/facilitator/students" class="nav-link">👥 Enrolled Students</a>
+      <a href="/facilitator/manage_facilitators" class="nav-link active">👨‍🏫 Facilitator &amp; Track Hub</a>
+      <button type="button" onclick="openModal('changePasswordModal')" class="nav-link" style="background: none; border: none; cursor: pointer; color: #cbd5e1; font-family: inherit;">🔑 Change Password</button>
+      <a href="/" target="_blank" class="nav-link" style="color: #38bdf8;">🔗 Candidate Portal ↗</a>
+    </div>
+    <div class="user-tag">
+      👤 {{ session.get('facilitator_name', 'Administrator') }}
+      <a href="/facilitator/logout" class="btn-logout">Logout</a>
+    </div>
+  </div>
+
+  <!-- Admin Hero Showcase -->
+  <div class="admin-hero">
+    <div class="hero-badge-pill">🛡️ System Administration Oversight</div>
+    <h1 class="hero-title">Facilitators &amp; Course Tracks Control Center</h1>
+    <p class="hero-desc">
+      As Administrator, you oversee institutional configuration, register new course tracks, manage facilitator staff accounts, and maintain student records across all academy programs. Course exam creation is handled directly by each assigned track facilitator.
+    </p>
+    <div class="hero-stats-row">
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">{{ facilitators|length }}</div>
+        <div class="hero-stat-label">Facilitators</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">{{ course_tracks|length }}</div>
+        <div class="hero-stat-label">Course Tracks</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">{{ total_students }}</div>
+        <div class="hero-stat-label">Enrolled Students</div>
+      </div>
+    </div>
+  </div>
+
+  {% if message %}
+    <div class="alert alert-success">
+      <span>✅ {{ message }}</span>
+      <button type="button" onclick="this.parentElement.remove()" style="background: none; border: none; cursor: pointer; font-size: 18px; color: #065f46;">&times;</button>
+    </div>
+  {% endif %}
+
+  {% if error %}
+    <div class="alert alert-error">
+      <span>⚠️ {{ error }}</span>
+      <button type="button" onclick="this.parentElement.remove()" style="background: none; border: none; cursor: pointer; font-size: 18px; color: #991b1b;">&times;</button>
+    </div>
+  {% endif %}
+
+  <!-- Facilitators Section -->
+  <div class="section-header">
+    <div class="section-title">
+      <span>👨‍🏫 Registered Academy Facilitators</span>
+      <span style="font-size: 13px; color: var(--text-muted); font-weight: normal;">({{ facilitators|length }} Accounts)</span>
+    </div>
+    <div class="btn-group">
+      <button type="button" onclick="openModal('addCourseModal')" class="btn btn-gold">
+        ➕ New Course Track
+      </button>
+      <button type="button" onclick="openModal('addFacilitatorModal')" class="btn btn-primary">
+        ➕ Add Facilitator
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Facilitator Name</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Assigned Teaching Track(s)</th>
+          <th style="text-align: right;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in facilitators %}
+          <tr>
+            <td data-label="ID" style="color: var(--text-muted); font-family: monospace;">#{{ f.id }}</td>
+            <td data-label="Facilitator Name">
+              <strong style="color: #0f172a;">{{ f.name }}</strong>
+            </td>
+            <td data-label="Username">
+              <span style="font-family: monospace; color: #475569;">@{{ f.username }}</span>
+            </td>
+            <td data-label="Role">
+              {% if f.role == 'admin' %}
+                <span class="badge-admin">Administrator</span>
+              {% else %}
+                <span class="badge-facilitator">Course Facilitator</span>
+              {% endif %}
+            </td>
+            <td data-label="Assigned Track(s)">
+              {% if f.role == 'admin' %}
+                <span style="color: var(--text-muted); font-size: 12.5px; font-style: italic;">All Tracks (Global Administrator)</span>
+              {% elif f.assigned_courses and f.assigned_courses|length > 0 %}
+                {% for ac in f.assigned_courses %}
+                  <span class="badge-course">[{{ ac.course_code or 'EXAM' }}] {{ ac.title }}</span>
+                {% endfor %}
+              {% else %}
+                <span style="color: #94a3b8; font-size: 12px; font-style: italic;">No specific track assigned yet</span>
+              {% endif %}
+            </td>
+            <td data-label="Actions" style="text-align: right;">
+              <div style="display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                {% if f.role != 'admin' %}
+                  <button type="button" class="btn btn-outline" style="padding: 6px 10px; font-size: 12px;" onclick="openModal('assignCoursesModal_{{ f.id }}')">
+                    ✏️ Tracks
+                  </button>
+                  <button type="button" class="btn btn-outline" style="padding: 6px 10px; font-size: 12px; border-color: #d97706; color: #b45309;" onclick="openModal('resetPasswordModal_{{ f.id }}')">
+                    🔑 Reset Password
+                  </button>
+                  <form method="POST" action="/facilitator/facilitator/delete/{{ f.id }}" onsubmit="return confirm('Are you sure you want to remove facilitator {{ f.name }} (@{{ f.username }}) from the database?');" style="display: inline;">
+                    <button type="submit" class="btn btn-danger-outline" style="padding: 6px 10px; font-size: 12px;">
+                      🗑️ Remove
+                    </button>
+                  </form>
+                {% else %}
+                  <button type="button" class="btn btn-outline" style="padding: 6px 10px; font-size: 12px;" onclick="openModal('changePasswordModal')">
+                    🔑 Password
+                  </button>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+
+          <!-- Modal: Assign Courses for this Facilitator -->
+          {% if f.role != 'admin' %}
+          <div class="modal-backdrop" id="assignCoursesModal_{{ f.id }}">
+            <div class="modal-dialog">
+              <button type="button" class="btn-close" onclick="closeModal('assignCoursesModal_{{ f.id }}')">&times;</button>
+              <div class="modal-title">✏️ Assign Courses to {{ f.name }}</div>
+              <div class="modal-desc">Select the course tracks this facilitator manages assessments and students for.</div>
+
+              <form method="POST" action="/facilitator/facilitator/assign_courses/{{ f.id }}">
+                <div class="form-group">
+                  <label>Available Course Tracks</label>
+                  <div class="course-checkbox-grid">
+                    {% for exam in all_exams %}
+                      {% set is_assigned = f.assigned_courses|selectattr('id', 'equalto', exam.id)|list|length > 0 %}
+                      <label class="course-checkbox-item">
+                        <input type="checkbox" name="course_ids" value="{{ exam.id }}" {% if is_assigned %}checked{% endif %}>
+                        <span>[{{ exam.course_code or 'EXAM' }}] <strong>{{ exam.title }}</strong></span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline" onclick="closeModal('assignCoursesModal_{{ f.id }}')">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Course Assignments</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Modal: Reset Password for this Facilitator -->
+          <div class="modal-backdrop" id="resetPasswordModal_{{ f.id }}">
+            <div class="modal-dialog">
+              <button type="button" class="btn-close" onclick="closeModal('resetPasswordModal_{{ f.id }}')">&times;</button>
+              <div class="modal-title">🔑 Reset Password for {{ f.name }}</div>
+              <div class="modal-desc">Assign a new password for facilitator account @{{ f.username }}.</div>
+
+              <form method="POST" action="/facilitator/facilitator/reset_password/{{ f.id }}">
+                <div class="form-group">
+                  <label>New Password (min 6 characters)</label>
+                  <input type="password" name="new_password" required minlength="6" class="form-control" placeholder="Enter new password for {{ f.name }}">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline" onclick="closeModal('resetPasswordModal_{{ f.id }}')">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% endif %}
+
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Course Tracks Section -->
+  <div class="section-header">
+    <div class="section-title">
+      <span>📚 Academy Course Tracks</span>
+      <span style="font-size: 13px; color: var(--text-muted); font-weight: normal;">({{ all_exams|length }} Registered)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>Track Code</th>
+          <th>Course Title</th>
+          <th>Cohort Label</th>
+          <th>Duration</th>
+          <th>Pass Benchmark</th>
+          <th>Question Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exam in all_exams %}
+          <tr>
+            <td data-label="Track Code">
+              <strong style="color: var(--primary); font-family: monospace; font-size: 13px;">{{ exam.course_code or 'EXAM' }}</strong>
+            </td>
+            <td data-label="Course Title">
+              <strong style="color: #0f172a;">{{ exam.title }}</strong>
+            </td>
+            <td data-label="Cohort Label" style="color: var(--text-muted); font-size: 13px;">
+              {{ exam.cohort or 'YMO Assessment' }}
+            </td>
+            <td data-label="Duration">{{ exam.duration_minutes }} mins</td>
+            <td data-label="Pass Benchmark">
+              <span style="font-weight: 700; color: #044e39; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 2px 6px; border-radius: 4px; font-size: 12px;">
+                {{ exam.passing_cutoff }}%
+              </span>
+            </td>
+            <td data-label="Question Count">
+              <span style="font-weight: 700; color: #475569;">{{ exam.question_count }} Questions</span>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= MODAL: ADD NEW COURSE TRACK ================= -->
+<div class="modal-backdrop" id="addCourseModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('addCourseModal')">&times;</button>
+    <div class="modal-title">➕ Register New Course Track</div>
+    <div class="modal-desc">Create a new institutional course program for the academy. Once registered, facilitators can be assigned and students enrolled.</div>
+
+    <form method="POST" action="/facilitator/courses/create">
+      <div class="form-group">
+        <label for="course_code">Course Track Code (Short Acronym) <span style="color: #dc2626;">*</span></label>
+        <input type="text" id="course_code" name="code" class="form-control" placeholder="e.g. CYBER, DATA, UIUX" required style="text-transform: uppercase;">
+      </div>
+
+      <div class="form-group">
+        <label for="course_title">Course Full Title <span style="color: #dc2626;">*</span></label>
+        <input type="text" id="course_title" name="title" class="form-control" placeholder="e.g. Cybersecurity & Ethical Hacking" required>
+      </div>
+
+      <div class="form-group">
+        <label for="course_cohort">Cohort Description</label>
+        <input type="text" id="course_cohort" name="cohort" class="form-control" placeholder="e.g. YMO CBT Assessment - Cybersecurity">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label for="course_duration">Assessment Duration (Minutes)</label>
+          <input type="number" id="course_duration" name="duration_minutes" class="form-control" value="60" min="5" max="300">
+        </div>
+        <div class="form-group">
+          <label for="course_cutoff">Passing Benchmark Cutoff (%)</label>
+          <input type="number" id="course_cutoff" name="passing_cutoff" class="form-control" value="85" step="0.5" min="1" max="100">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="course_instructions">Candidate Instructions</label>
+        <textarea id="course_instructions" name="instructions" class="form-control" placeholder="Assessment guidelines displayed to students...">Choose the single best answer (A, B, C, or D). Each question carries one mark.</textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('addCourseModal')">Cancel</button>
+        <button type="submit" class="btn btn-gold">Register Course Track</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: ADD NEW FACILITATOR ================= -->
+<div class="modal-backdrop" id="addFacilitatorModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('addFacilitatorModal')">&times;</button>
+    <div class="modal-title">➕ Add New Facilitator</div>
+    <div class="modal-desc">Create a new instructor account and assign their responsible teaching track(s).</div>
+
+    <form method="POST" action="/facilitator/manage_facilitators">
+      <div class="form-group">
+        <label for="fac_name">Facilitator Full Name <span style="color: #dc2626;">*</span></label>
+        <input type="text" id="fac_name" name="name" class="form-control" placeholder="e.g. Dr. Adeyemi Ogunleye" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fac_username">Portal Username <span style="color: #dc2626;">*</span></label>
+        <input type="text" id="fac_username" name="username" class="form-control" placeholder="e.g. aogunleye" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="fac_password">Password Key (Min 6 Characters) <span style="color: #dc2626;">*</span></label>
+        <input type="password" id="fac_password" name="password" class="form-control" placeholder="Enter secure password" required minlength="6">
+      </div>
+
+      <div class="form-group">
+        <label>Assign Course Track(s)</label>
+        <div class="course-checkbox-grid">
+          {% for exam in all_exams %}
+            <label class="course-checkbox-item">
+              <input type="checkbox" name="course_ids" value="{{ exam.id }}">
+              <span>[{{ exam.course_code or 'EXAM' }}] <strong>{{ exam.title }}</strong></span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('addFacilitatorModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Create Facilitator Account</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: CHANGE ADMIN PASSWORD ================= -->
+<div class="modal-backdrop" id="changePasswordModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('changePasswordModal')">&times;</button>
+    <div class="modal-title">🔑 Change Administrator Password</div>
+    <div class="modal-desc">Update your admin login password.</div>
+    <form method="POST" action="/facilitator/change_password">
+      <input type="hidden" name="next" value="{{ request.full_path }}">
+      <div class="form-group">
+        <label>Current Password</label>
+        <input type="password" name="current_password" required class="form-control" placeholder="Enter current password">
+      </div>
+      <div class="form-group">
+        <label>New Password (min 6 characters)</label>
+        <input type="password" name="new_password" required minlength="6" class="form-control" placeholder="Enter new password">
+      </div>
+      <div class="form-group">
+        <label>Confirm New Password</label>
+        <input type="password" name="confirm_password" required minlength="6" class="form-control" placeholder="Re-enter new password">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('changePasswordModal')">Cancel</button>
+        <button type="submit" class="btn btn-gold">Save New Password</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('open');
+  }
+  function closeModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('open');
+  }
+  window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-backdrop')) {
+      e.target.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>

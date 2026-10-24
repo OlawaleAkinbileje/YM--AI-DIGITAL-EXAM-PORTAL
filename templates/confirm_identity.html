@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Candidate Identity | YEYE MOREMI OODUA CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ymo-green: #044e39;
+      --ymo-green-light: #065f46;
+      --ymo-green-dark: #022c22;
+      --ymo-gold: #d97706;
+      --ymo-gold-light: #f59e0b;
+      --bg: #0f172a;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --success: #16a34a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #032d22 0%, #064e3b 40%, #0f172a 90%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+    }
+
+    .confirm-container {
+      max-width: 1020px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    /* Top Brand & Hero Banner */
+    .confirm-hero {
+      position: relative;
+      background: linear-gradient(135deg, #022c22 0%, #044e39 100%);
+      color: #ffffff;
+      padding: 26px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 3px solid var(--ymo-gold);
+      overflow: hidden;
+    }
+    .hero-bg-img {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: saturate(1.2);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, rgba(2, 44, 34, 0.95) 0%, rgba(4, 78, 57, 0.85) 60%, rgba(2, 44, 34, 0.92) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-badge {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--ymo-gold);
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.25);
+    }
+    .hero-title-area h1 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .hero-title-area p {
+      font-size: 13px;
+      color: #d1fae5;
+      margin-top: 2px;
+    }
+    .step-pill {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fef08a;
+    }
+
+    /* Main Body Area: 2-Column Split Layout */
+    .confirm-body {
+      padding: 32px 36px 36px 36px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 840px) {
+      .confirm-body {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 24px;
+      }
+      .id-card {
+        position: static !important;
+      }
+    }
+
+    /* Left Card: Candidate ID & Passport (Sticky on Desktop) */
+    .id-card {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 24px;
+      height: fit-content;
+    }
+    .verified-ribbon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #ecfdf5;
+      color: var(--ymo-green);
+      border: 1px solid #a7f3d0;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    /* Passport Container */
+    .passport-box {
+      width: 135px;
+      height: 155px;
+      border-radius: 14px;
+      border: 3px solid var(--ymo-gold);
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.25);
+      overflow: hidden;
+      background: #e2e8f0;
+      margin-top: 14px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .passport-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .passport-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      color: #64748b;
+      padding: 8px;
+    }
+    .avatar-initials {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--ymo-green);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .student-fullname {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+      line-height: 1.25;
+    }
+    .reg-number-pill {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ymo-green);
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .id-details-list {
+      width: 100%;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 14px;
+      text-align: left;
+      font-size: 12.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .id-detail-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      gap: 8px;
+    }
+    .id-detail-row strong {
+      color: #0f172a;
+      text-align: right;
+    }
+
+    /* Right Card: Exam Selection */
+    .selection-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 26px 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    #confirmForm {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .panel-header {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .panel-header h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+    .panel-header p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .track-count-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #065f46;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .alert-notice {
+      background: #fef2f2;
+      border: 1.5px solid #fecaca;
+      border-left: 4px solid #dc2626;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      color: #991b1b;
+      margin-bottom: 16px;
+    }
+
+    /* Exam Option Cards & Dedicated Scroll Viewport */
+    .exams-scroll-viewport {
+      max-height: 290px;
+      min-height: 180px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .exams-scroll-viewport::-webkit-scrollbar {
+      width: 6px;
+    }
+    .exams-scroll-viewport::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 8px;
+    }
+    .exams-scroll-viewport::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 8px;
+    }
+    .exams-scroll-viewport::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .exam-radio-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .exam-radio-card:hover {
+      border-color: #94a3b8;
+      background: #f8fafc;
+    }
+    .exam-radio-card.active {
+      border-color: var(--ymo-green);
+      background: #f0fdf4;
+      box-shadow: 0 4px 14px rgba(4, 78, 57, 0.1);
+    }
+    .exam-radio-card input[type="radio"] {
+      margin-top: 3px;
+      accent-color: var(--ymo-green);
+      transform: scale(1.2);
+    }
+    .exam-card-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .exam-card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .exam-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    .exam-track-code {
+      background: #e0f2fe;
+      color: #0284c7;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-right: 6px;
+      letter-spacing: 0.5px;
+      font-family: monospace;
+      display: inline-block;
+    }
+    .exam-card-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .exam-card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .enrolled-tag {
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      border: 1px solid #bbf7d0;
+    }
+    .granted-tag {
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+    }
+
+    /* Fixed Action Buttons (Directly below scroll list) */
+    .btn-actions-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 14px;
+    }
+    .btn-confirm {
+      flex: 1;
+      min-width: 220px;
+      background: linear-gradient(135deg, var(--ymo-green) 0%, #036c4f 100%);
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(4, 78, 57, 0.25);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-confirm:hover {
+      background: linear-gradient(135deg, #023627 0%, var(--ymo-green) 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(4, 78, 57, 0.35);
+    }
+    .btn-logout {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-logout:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="confirm-container">
+
+  <!-- Top Hero Header -->
+  <header class="confirm-hero">
+    <img src="/static/img/student_exam_hero.jpg" alt="Assessment Environment" class="hero-bg-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" class="logo-badge">
+      <div class="hero-title-area">
+        <h1>YEYE MOREMI OODUA AI & DIGITAL TRAINING HUB</h1>
+        <p>Candidate Identity Verification & Assessment Entry</p>
+      </div>
+    </div>
+    <div class="step-pill">
+      Step 2 of 2: Confirm Identity
+    </div>
+  </header>
+
+  <div class="confirm-body">
+
+    <!-- Left Column: Student Identity & Passport Card (Sticky) -->
+    <div class="id-card">
+      <div class="verified-ribbon">✓ VERIFIED</div>
+
+      <!-- Auto-Fitting Passport Placeholder -->
+      <div class="passport-box">
+        <img src="/student/passport/{{ student.id }}" 
+             alt="{{ student.first_name }} {{ student.last_name }} Passport" 
+             class="passport-img"
+             referrerpolicy="no-referrer"
+             loading="eager"
+             onerror="if(!this.dataset.fallback && '{{ student.passport_url }}'){ this.dataset.fallback='1'; this.src='{{ student.passport_url }}'; } else { this.style.display='none'; document.getElementById('avatarFallback').style.display='flex'; }">
+        <div id="avatarFallback" class="passport-placeholder" style="display: none;">
+          <div class="avatar-initials">{{ student.first_name[:1] }}{{ student.last_name[:1] }}</div>
+          <span style="font-size: 11px; font-weight: 700; color: #044e39;">{{ student.reg_number }}</span>
+          <span style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Official Candidate</span>
+        </div>
+      </div>
+
+      <h2 class="student-fullname">{{ student.first_name }} {{ student.last_name }}</h2>
+      <div class="reg-number-pill">{{ student.reg_number }}</div>
+
+      <div class="id-details-list">
+        <div class="id-detail-row">
+          <span>Primary Track:</span>
+          <strong>{{ student.primary_track or 'General' }}</strong>
+        </div>
+        <div class="id-detail-row">
+          <span>Enrolled Course:</span>
+          <strong style="color: #044e39;">{{ student.enrolled_course_title or 'General Enrolment' }}</strong>
+        </div>
+        <div class="id-detail-row">
+          <span>Permitted Exams:</span>
+          <strong>{{ available_exams|length }} Assessment Track(s)</strong>
+        </div>
+        <div class="id-detail-row">
+          <span>Assessment Status:</span>
+          <strong style="color: var(--ymo-green);">Eligible to Sit</strong>
+        </div>
+        <div class="id-detail-row">
+          <span>Attempts Permitted:</span>
+          <strong>2 (Initial + 1 Retake)</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Exam Track Selection & Pinned Action Button -->
+    <div class="selection-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Select Examination Track</h2>
+          <p>Please select the CBT assessment track you are sitting for today:</p>
+        </div>
+        {% if available_exams|length > 1 %}
+          <div class="track-count-badge">
+            ↕ {{ available_exams|length }} Tracks Available (Scroll to view)
+          </div>
+        {% endif %}
+      </div>
+
+      {% if error %}
+        <div class="alert-notice">
+          ⚠️ {{ error }}
+        </div>
+      {% endif %}
+
+      <form method="POST" action="/begin_cbt" id="confirmForm">
+        <!-- Scrollable Exam Selection Viewport (Scrolls smoothly up and down) -->
+        <div class="exams-scroll-viewport">
+          {% for e in available_exams %}
+            {% set is_registered_track = (student.primary_track and e.course_code and student.primary_track|upper == e.course_code|upper) %}
+            <label class="exam-radio-card {{ 'active' if loop.first else '' }}" id="card_{{ e.id }}" onclick="selectCard('{{ e.id }}')">
+              <input type="radio" 
+                     name="exam_id" 
+                     value="{{ e.id }}" 
+                     {{ 'checked' if loop.first else '' }} 
+                     required>
+              <div class="exam-card-content">
+                <div class="exam-card-title-row">
+                  <div class="exam-card-title">
+                    {% if e.course_code %}
+                      <span class="exam-track-code">{{ e.course_code }}</span>
+                    {% endif %}
+                    {{ e.title }}
+                  </div>
+                  {% if is_registered_track %}
+                    <span class="enrolled-tag">Registered Enrolled Course</span>
+                  {% else %}
+                    <span class="granted-tag">Special Permission Granted 🔓</span>
+                  {% endif %}
+                </div>
+                <div class="exam-card-meta">
+                  <span>⏱ <strong>{{ e.duration_minutes }} Mins</strong></span>
+                  <span>🎯 <strong>{{ e.passing_cutoff }}% Pass Cutoff</strong></span>
+                  <span>📝 <strong>{{ e.question_count if e.question_count is defined else 'Questions' }}</strong></span>
+                </div>
+              </div>
+            </label>
+          {% endfor %}
+        </div>
+
+        <!-- Always-Visible Action Buttons (Pinned right under scroll viewport) -->
+        <div class="btn-actions-row">
+          <button type="submit" class="btn-confirm">
+            <span>Confirm Identity &amp; Start Assessment</span>
+            <span>→</span>
+          </button>
+          <a href="/logout_candidate" class="btn-logout">Not you? Switch Account</a>
+        </div>
+      </form>
+
+      <div style="font-size: 12px; color: var(--text-muted); margin-top: 18px; line-height: 1.5;">
+        🔒 <strong>Examination Notice:</strong> By clicking "Confirm Identity &amp; Start Assessment", you verify that you are the registered student identified above. Your countdown timer will start immediately upon launch.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function selectCard(examId) {
+    document.querySelectorAll('.exam-radio-card').forEach(card => {
+      card.classList.remove('active');
+    });
+    const activeCard = document.getElementById('card_' + examId);
+    if (activeCard) {
+      activeCard.classList.add('active');
+      const radio = activeCard.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+    }
+  }
+</script>
+
+</body>
+</html>

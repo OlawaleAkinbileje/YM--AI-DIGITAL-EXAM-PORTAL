@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Supabase: Start Engine (Docker)",
+            "type": "shell",
+            "command": "npx supabase start",
+            "options": {
+                "shell": {
+                    "executable": "bash.exe"
+                }
+            },
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Supabase: Stop Engine",
+            "type": "shell",
+            "command": "npx supabase stop",
+            "options": {
+                "shell": {
+                    "executable": "bash.exe"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Supabase: Status & URLs",
+            "type": "shell",
+            "command": "npx supabase status",
+            "options": {
+                "shell": {
+                    "executable": "bash.exe"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Supabase: Reset DB & Run Migrations",
+            "type": "shell",
+            "command": "npx supabase db reset",
+            "options": {
+                "shell": {
+                    "executable": "bash.exe"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Supabase: Open Studio Dashboard",
+            "type": "shell",
+            "command": "start http://localhost:54323",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "silent"
+            }
+        }
+    ]
+}

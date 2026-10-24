@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ settings.title }} | YEYE MOREMI OODUA CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ymo-green: #044e39;
+      --ymo-green-light: #065f46;
+      --ymo-green-dark: #022c22;
+      --ymo-gold: #d97706;
+      --ymo-gold-light: #f59e0b;
+      --ymo-gold-bg: #fffbeb;
+      --bg: #f8faf9;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fixed Top App Bar */
+    .top-header {
+      background: var(--ymo-green-dark);
+      color: #ffffff;
+      border-bottom: 3px solid var(--ymo-gold);
+      padding: 12px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(2, 44, 34, 0.25);
+    }
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1.5px solid var(--ymo-gold);
+    }
+    .brand-title {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 11.5px;
+      color: #a7f3d0;
+      font-weight: 500;
+    }
+
+    /* Candidate & Timer HUD */
+    .hud-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .candidate-pill {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .candidate-pill strong { color: #ffffff; }
+
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #042f24;
+      border: 1.5px solid var(--ymo-gold);
+      padding: 6px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .timer-icon { font-size: 15px; color: var(--ymo-gold); }
+    .timer-digits {
+      font-size: 20px;
+      font-weight: 800;
+      font-family: monospace;
+      letter-spacing: 1.5px;
+      color: #fef08a;
+    }
+
+    /* Progress Linear Bar */
+    .progress-bar-wrap {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--ymo-gold);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Main CBT Layout */
+    .main-content {
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto 40px auto;
+      padding: 0 16px;
+      flex: 1;
+    }
+
+    /* Horizontal Slide Question Navigator */
+    .nav-slider-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+    }
+    .nav-slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .slider-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ymo-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slider-toggle-btn {
+      background: none;
+      border: 1px solid #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .slider-toggle-btn:hover { background: #f1f5f9; color: var(--text); }
+
+    /* The Scrollable Track */
+    .slider-track-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slider-scroll-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      width: 32px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .slider-scroll-btn:hover { background: var(--ymo-green); color: #ffffff; border-color: var(--ymo-green); }
+
+    .horizontal-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 4px 2px 10px 2px;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+    .horizontal-slider::-webkit-scrollbar { height: 5px; }
+    .horizontal-slider::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+    .q-pill {
+      min-width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .q-pill:hover { border-color: var(--ymo-green); color: var(--ymo-green); }
+    .q-pill.active {
+      border-color: var(--ymo-gold);
+      background: var(--ymo-gold-bg);
+      color: var(--ymo-gold-hover);
+      box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.35);
+      transform: scale(1.05);
+    }
+    .q-pill.answered {
+      background: var(--ymo-green);
+      border-color: var(--ymo-green);
+      color: #ffffff;
+    }
+    .q-pill.answered.active {
+      box-shadow: 0 0 0 2px var(--ymo-gold);
+    }
+
+    /* Single Question Card Box */
+    .question-view-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 32px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .q-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .q-number-pill {
+      background: #ecfdf5;
+      color: var(--ymo-green);
+      border: 1px solid #a7f3d0;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+    .q-status-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .q-prompt-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+
+    /* Interactive Options Group */
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 2px solid #e2e8f0;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .option-item:hover {
+      border-color: #cbd5e1;
+      background: #f8fafc;
+    }
+    .option-item input[type="radio"] {
+      margin-top: 4px;
+      accent-color: var(--ymo-green);
+      cursor: pointer;
+    }
+    .option-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .option-content {
+      font-size: 15.5px;
+      color: var(--text);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    /* Selected Option Highlight */
+    .option-item.selected {
+      border-color: var(--ymo-green);
+      background: #f0fdf4;
+      box-shadow: 0 4px 12px rgba(4, 78, 57, 0.08);
+    }
+    .option-item.selected .option-badge {
+      background: var(--ymo-green);
+      border-color: var(--ymo-green);
+      color: #ffffff;
+    }
+
+    /* Bottom Navigation Stepper */
+    .card-footer-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+    }
+    .btn-prev {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-prev:hover:not(:disabled) { background: #e2e8f0; }
+    .btn-prev:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-next {
+      background: var(--ymo-green);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(4, 78, 57, 0.2);
+    }
+    .btn-next:hover {
+      background: #033a2a;
+      box-shadow: 0 6px 14px rgba(4, 78, 57, 0.3);
+    }
+
+    .btn-submit-exam {
+      background: linear-gradient(135deg, var(--ymo-gold) 0%, #b45309 100%);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-submit-exam:hover {
+      background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+      transform: translateY(-1px);
+    }
+
+    .hud-submit-btn {
+      background: linear-gradient(135deg, var(--ymo-gold) 0%, #b45309 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
+      transition: all 0.2s;
+    }
+    .hud-submit-btn:hover {
+      background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+      transform: translateY(-1px);
+    }
+
+    /* Modal Backdrop & Confirm Box */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(2px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: #ffffff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .modal-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .modal-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fixed Top Navigation HUD -->
+<header class="top-header">
+  <div class="header-inner">
+    <div class="brand-section">
+      <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" class="header-logo">
+      <div>
+        <div class="brand-title">YEYE MOREMI OODUA</div>
+        <div class="brand-sub">{{ settings.title }}</div>
+      </div>
+    </div>
+
+    <div class="hud-right">
+      <div class="candidate-pill" style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--ymo-gold); color: #022c22; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px;">
+          {{ (session.get('first_name', 'C')[:1] + session.get('last_name', 'A')[:1])|upper }}
+        </div>
+        <div>
+          <span style="color: #ffffff; font-weight: 700;">{{ session.get('first_name') }} {{ session.get('last_name') }}</span>
+          {% if session.get('reg_number') %}
+            <span style="color: #fef08a; font-family: monospace; font-size: 11.5px; margin-left: 4px;">({{ session.get('reg_number') }})</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="timer-badge">
+        <span class="timer-icon">⏱</span>
+        <span id="timer-display" class="timer-digits">--:--</span>
+      </div>
+      <button type="button" class="hud-submit-btn" onclick="promptSubmitConfirm()" title="Submit your assessment">
+        <span>Finish &amp; Submit</span>
+        <span>✓</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Overall Answer Progress Bar -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="globalProgressBar"></div>
+</div>
+
+<main class="main-content">
+  {% if not questions or questions|length == 0 %}
+    <div class="question-view-card" style="text-align: center; padding: 48px 24px;">
+      <div style="font-size: 48px; margin-bottom: 16px;">📚</div>
+      <h2 style="font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Assessment Questions Pending</h2>
+      <p style="font-size: 14.5px; color: var(--text-muted); max-width: 480px; margin: 0 auto 24px auto; line-height: 1.6;">
+        Questions for <strong>{{ settings.title }}</strong> have not been published by your course instructor yet. Please contact your track facilitator or return to the portal.
+      </p>
+      <a href="/" class="btn-step btn-next" style="text-decoration: none; display: inline-flex; justify-content: center;">← Return to Portal</a>
+    </div>
+  {% else %}
+  <!-- Horizontal Slide Question Navigator -->
+  <section class="nav-slider-panel" id="sliderPanel">
+    <div class="nav-slider-header">
+      <div class="slider-title">
+        <span>🧭 Questions Navigator</span>
+        <span style="font-size: 11.5px; color: var(--text-muted); font-weight: 500;">(Slide to Jump to Any Question)</span>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span style="font-size: 12px; font-weight: 600; color: var(--ymo-green);" id="answeredCounterText">0 / {{ questions|length }} Answered</span>
+        <button type="button" class="slider-toggle-btn" onclick="toggleSliderPanel()">▲ Hide Slider</button>
+      </div>
+    </div>
+
+    <div class="slider-track-wrap" id="sliderTrackArea">
+      <button type="button" class="slider-scroll-btn" onclick="scrollSlider(-200)">◀</button>
+      <div class="horizontal-slider" id="questionTrack">
+        {% for q in questions %}
+          <button type="button" 
+                  class="q-pill" 
+                  id="pill_{{ loop.index0 }}" 
+                  onclick="goToQuestion('{{ loop.index0 }}')">
+            {{ loop.index }}
+          </button>
+        {% endfor %}
+      </div>
+      <button type="button" class="slider-scroll-btn" onclick="scrollSlider(200)">▶</button>
+    </div>
+  </section>
+
+  <!-- Single Question Display Card -->
+  <form id="cbtForm" method="POST" action="/submit_exam">
+    <input type="hidden" name="reg_number" value="{{ session.get('reg_number') }}">
+    <input type="hidden" name="first_name" value="{{ session.get('first_name') }}">
+    <input type="hidden" name="last_name" value="{{ session.get('last_name') }}">
+
+    <div class="question-view-card">
+      <div class="q-header-row">
+        <span class="q-number-pill" id="questionNumberBadge">Question 1 of {{ questions|length }}</span>
+        <span class="q-status-text" id="answerStatusBadge">⚪ Not Answered Yet</span>
+      </div>
+
+      <div class="q-prompt-text" id="questionPromptText">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="options-container" id="optionsContainer">
+        <!-- 4 Options Injected via JavaScript -->
+      </div>
+
+      <!-- Navigation & Action Stepper -->
+      <div class="card-footer-controls">
+        <button type="button" id="prevBtn" class="btn-step btn-prev" onclick="navigateStep(-1)" disabled>
+          ← Previous
+        </button>
+
+        <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">
+          Use <code>←</code> <code>→</code> keys to navigate
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="button" id="nextBtn" class="btn-step btn-next" onclick="navigateStep(1)">
+            Next Question →
+          </button>
+          <button type="button" id="submitExamBtn" class="btn-submit-exam" onclick="promptSubmitConfirm()">
+            Finish &amp; Submit ✓
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden form radio storage so form posts cleanly -->
+    <div id="hiddenFormInputs" style="display: none;"></div>
+  </form>
+  {% endif %}
+</main>
+
+<!-- Submission Confirmation Modal -->
+<div class="modal-backdrop" id="confirmModal">
+  <div class="modal-card">
+    <div style="font-size: 44px; margin-bottom: 8px;" id="modalIcon">📝</div>
+    <h3 id="modalTitle">Ready to Submit Assessment?</h3>
+    <p id="modalDesc" style="margin-bottom: 14px;">Please review your progress summary before final submission.</p>
+
+    <!-- Candidate Progress Breakdown Dashboard -->
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; text-align: left;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13.5px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">
+        <span style="color: var(--text-muted); font-weight: 600;">Candidate:</span>
+        <strong style="color: #0f172a;">{{ session.get('first_name') }} {{ session.get('last_name') }} {% if session.get('reg_number') %}({{ session.get('reg_number') }}){% endif %}</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13.5px;">
+        <span style="color: var(--text-muted); font-weight: 600;">Total Questions:</span>
+        <strong style="color: #0f172a;" id="modalTotalQ">0</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13.5px;">
+        <span style="color: #16a34a; font-weight: 700;">Questions Answered:</span>
+        <strong style="color: #16a34a;" id="modalAnsweredQ">0 (0%)</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 13.5px;">
+        <span style="color: #dc2626; font-weight: 700;">Unanswered Questions:</span>
+        <strong style="color: #dc2626;" id="modalUnansweredQ">0</strong>
+      </div>
+    </div>
+
+    <div id="modalWarningBanner" style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 10px 14px; border-radius: 8px; font-size: 12.5px; margin-bottom: 18px; text-align: left; line-height: 1.45;">
+      ⚠️ <strong>Notice:</strong> You still have unanswered questions. Any unanswered questions will receive <strong>0 marks</strong>. You can click <em>Review Answers</em> to answer them before time runs out.
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-step btn-prev" onclick="closeModal()">← Review Answers</button>
+      <button type="button" class="btn-step btn-next" onclick="finalSubmit()" style="background: var(--ymo-green);">Confirm &amp; Final Submit ✓</button>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="questions-data">{{ questions|tojson|safe }}</script>
+<script>
+  // 1. Raw Questions Data from Flask
+  const QUESTIONS = JSON.parse(document.getElementById("questions-data").textContent);
+  const TOTAL_QUESTIONS = QUESTIONS.length;
+  const EXAM_ID = Number("{{ settings.id if settings.id is defined else 1 }}");
+  const TOTAL_MINUTES = Number("{{ settings.duration_minutes }}") || 60;
+
+  const STORAGE_KEY = "ymo_cbt_answers_exam_" + EXAM_ID;
+  const TIMER_KEY = "ymo_cbt_endtime_exam_" + EXAM_ID;
+
+  let currentIndex = 0;
+  let userAnswers = {};
+
+  // DOM Elements
+  const promptEl = document.getElementById("questionPromptText");
+  const optionsEl = document.getElementById("optionsContainer");
+  const numBadgeEl = document.getElementById("questionNumberBadge");
+  const statusBadgeEl = document.getElementById("answerStatusBadge");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const submitExamBtn = document.getElementById("submitExamBtn");
+  const questionTrack = document.getElementById("questionTrack");
+  const globalProgressBar = document.getElementById("globalProgressBar");
+  const answeredCounterText = document.getElementById("answeredCounterText");
+  const cbtForm = document.getElementById("cbtForm");
+  const timerDisplay = document.getElementById("timer-display");
+
+  // Load saved answers from localStorage
+  try {
+    const cached = localStorage.getItem(STORAGE_KEY);
+    if (cached) userAnswers = JSON.parse(cached);
+  } catch (e) {
+    userAnswers = {};
+  }
+
+  // 2. Render Single Question View
+  function renderQuestion(index) {
+    if (index < 0 || index >= TOTAL_QUESTIONS) return;
+    currentIndex = index;
+
+    const q = QUESTIONS[currentIndex];
+
+    // Update Badge & Prompt
+    numBadgeEl.textContent = `Question ${currentIndex + 1} of ${TOTAL_QUESTIONS}`;
+    promptEl.textContent = q.question;
+
+    const currentSelected = userAnswers[q.id];
+
+    if (currentSelected) {
+      statusBadgeEl.innerHTML = `<span style="color: var(--success);">✓ Selected Option ${currentSelected}</span>`;
+    } else {
+      statusBadgeEl.innerHTML = `<span style="color: var(--text-muted);">⚪ Not Answered Yet</span>`;
+    }
+
+    // Render 4 Options
+    optionsEl.innerHTML = "";
+    ["A", "B", "C", "D"].forEach(letter => {
+      const optText = q.options[letter] || "";
+      const isChecked = (currentSelected === letter);
+
+      const optDiv = document.createElement("div");
+      optDiv.className = "option-item" + (isChecked ? " selected" : "");
+      optDiv.onclick = () => selectOption(q.id, letter);
+
+      optDiv.innerHTML = `
+        <input type="radio" name="${q.id}" value="${letter}" ${isChecked ? "checked" : ""} style="pointer-events: none;">
+        <div class="option-badge">${letter}</div>
+        <div class="option-content">${optText}</div>
+      `;
+      optionsEl.appendChild(optDiv);
+    });
+
+    // Update Prev / Next Buttons
+    prevBtn.disabled = (currentIndex === 0);
+
+    if (currentIndex === TOTAL_QUESTIONS - 1) {
+      nextBtn.style.display = "none";
+      submitExamBtn.style.display = "inline-flex";
+    } else {
+      nextBtn.style.display = "inline-flex";
+      submitExamBtn.style.display = "inline-flex";
+    }
+
+    updateNavSliderPills();
+  }
+
+  // Select Option & Persist
+  function selectOption(qId, letter) {
+    userAnswers[qId] = letter;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+    renderQuestion(currentIndex);
+    updateGlobalProgress();
+  }
+
+  // Next / Prev Navigation
+  function navigateStep(delta) {
+    const nextIdx = currentIndex + delta;
+    if (nextIdx >= 0 && nextIdx < TOTAL_QUESTIONS) {
+      renderQuestion(nextIdx);
+    }
+  }
+
+  // Jump to Question from Horizontal Slider
+  function goToQuestion(index) {
+    renderQuestion(index);
+  }
+
+  // Horizontal Slider Scrolling Helpers
+  function scrollSlider(offset) {
+    questionTrack.scrollBy({ left: offset, behavior: "smooth" });
+  }
+
+  function updateNavSliderPills() {
+    for (let i = 0; i < TOTAL_QUESTIONS; i++) {
+      const pill = document.getElementById("pill_" + i);
+      if (!pill) continue;
+
+      const qId = QUESTIONS[i].id;
+      const isAnswered = Boolean(userAnswers[qId]);
+      const isActive = (i === currentIndex);
+
+      pill.className = "q-pill";
+      if (isAnswered) pill.classList.add("answered");
+      if (isActive) {
+        pill.classList.add("active");
+        pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+  }
+
+  function updateGlobalProgress() {
+    const answeredCount = Object.keys(userAnswers).length;
+    const pct = Math.round((answeredCount / TOTAL_QUESTIONS) * 100);
+    globalProgressBar.style.width = pct + "%";
+    answeredCounterText.textContent = `${answeredCount} / ${TOTAL_QUESTIONS} Answered (${pct}%)`;
+  }
+
+  function toggleSliderPanel() {
+    const trackArea = document.getElementById("sliderTrackArea");
+    const toggleBtn = event.target;
+    if (trackArea.style.display === "none") {
+      trackArea.style.display = "flex";
+      toggleBtn.textContent = "▲ Hide Slider";
+    } else {
+      trackArea.style.display = "none";
+      toggleBtn.textContent = "▼ Show Slider";
+    }
+  }
+
+  // Keyboard navigation shortcuts
+  document.addEventListener("keydown", (e) => {
+    if (document.getElementById("confirmModal").classList.contains("open")) return;
+
+    if (e.key === "ArrowLeft") {
+      navigateStep(-1);
+    } else if (e.key === "ArrowRight") {
+      navigateStep(1);
+    } else if (["a", "b", "c", "d", "A", "B", "C", "D"].includes(e.key)) {
+      const q = QUESTIONS[currentIndex];
+      selectOption(q.id, e.key.toUpperCase());
+    }
+  });
+
+  // Timer Initialization & Countdown
+  const now = Date.now();
+  let storedEndTime = localStorage.getItem(TIMER_KEY);
+  let parsedEndTime = storedEndTime ? parseInt(storedEndTime, 10) : null;
+
+  if (!parsedEndTime || isNaN(parsedEndTime) || parsedEndTime <= now) {
+    parsedEndTime = now + TOTAL_MINUTES * 60 * 1000;
+    localStorage.setItem(TIMER_KEY, parsedEndTime);
+  }
+
+  function updateTimer() {
+    const currentTime = Date.now();
+    const remaining = parsedEndTime - currentTime;
+
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "00:00";
+      timerDisplay.style.color = "#ef4444";
+      cleanupAndSubmit();
+      return;
+    }
+
+    const minutes = Math.floor(remaining / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
+    timerDisplay.textContent = 
+      String(minutes).padStart(2, "0") + ":" + 
+      String(seconds).padStart(2, "0");
+
+    if (remaining <= 5 * 60 * 1000) {
+      timerDisplay.style.color = "#f87171";
+    }
+  }
+
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 1000);
+
+  // Submission Flow
+  function promptSubmitConfirm() {
+    const answeredCount = Object.keys(userAnswers).length;
+    const unansweredCount = TOTAL_QUESTIONS - answeredCount;
+    const answeredPct = TOTAL_QUESTIONS > 0 ? Math.round((answeredCount / TOTAL_QUESTIONS) * 100) : 0;
+
+    const modal = document.getElementById("confirmModal");
+    const title = document.getElementById("modalTitle");
+    const desc = document.getElementById("modalDesc");
+    const icon = document.getElementById("modalIcon");
+    const totalElem = document.getElementById("modalTotalQ");
+    const answeredElem = document.getElementById("modalAnsweredQ");
+    const unansweredElem = document.getElementById("modalUnansweredQ");
+    const warnBanner = document.getElementById("modalWarningBanner");
+
+    if (totalElem) totalElem.textContent = TOTAL_QUESTIONS;
+    if (answeredElem) answeredElem.textContent = `${answeredCount} (${answeredPct}%)`;
+    if (unansweredElem) unansweredElem.textContent = unansweredCount;
+
+    if (unansweredCount > 0) {
+      icon.textContent = "⚠️";
+      title.textContent = "Unanswered Questions Remaining";
+      desc.textContent = `You have answered ${answeredCount} of ${TOTAL_QUESTIONS} questions. Please review below:`;
+      if (warnBanner) warnBanner.style.display = "block";
+    } else {
+      icon.textContent = "🎉";
+      title.textContent = "All Questions Answered!";
+      desc.textContent = `Great job! You have answered all ${TOTAL_QUESTIONS} questions. You are ready for final submission.`;
+      if (warnBanner) warnBanner.style.display = "none";
+    }
+
+    modal.classList.add("open");
+  }
+
+  function closeModal() {
+    document.getElementById("confirmModal").classList.remove("open");
+  }
+
+  function cleanupAndSubmit() {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(TIMER_KEY);
+
+    // Sync userAnswers into hidden form inputs
+    const hiddenContainer = document.getElementById("hiddenFormInputs");
+    hiddenContainer.innerHTML = "";
+    Object.entries(userAnswers).forEach(([qId, val]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = qId;
+      input.value = val;
+      hiddenContainer.appendChild(input);
+    });
+
+    cbtForm.submit();
+  }
+
+  function finalSubmit() {
+    closeModal();
+    cleanupAndSubmit();
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    if (TOTAL_QUESTIONS > 0) {
+      renderQuestion(0);
+      updateGlobalProgress();
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Secrets & Environment
+.env
+*.key
+*.pem
+
+# Supabase Local Cache
+supabase/.temp/
+supabase/.branches/
+
+# Scratch & Local Setup Utilities
+scratch/
+register_docker_path.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+env/
+venv/
+ENV/
+
+# Local databases & uploads
+*.db-journal
+/static/passports/*
+!/static/passports/.gitkeep

@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "ymo-cbt-supabase-collection-2026",
+    "name": "YMO CBT Portal & Local Supabase API",
+    "description": "Ready-to-use Postman collection for testing both the Local Supabase REST API (Port 54321) and the YMO CBT Flask Application (Port 5000).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "supabase_url",
+      "value": "http://127.0.0.1:54321",
+      "type": "string"
+    },
+    {
+      "key": "supabase_anon_key",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0",
+      "type": "string"
+    },
+    {
+      "key": "flask_url",
+      "value": "http://127.0.0.1:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Supabase Local REST API (Port 54321)",
+      "item": [
+        {
+          "name": "Get All Exams / Courses",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/exams?select=*",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "exams"],
+              "query": [{ "key": "select", "value": "*" }]
+            }
+          }
+        },
+        {
+          "name": "Get Questions by Exam ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/questions?exam_id=eq.1&select=id,question_number,question_text,options,correct_answer",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "questions"],
+              "query": [
+                { "key": "exam_id", "value": "eq.1" },
+                { "key": "select", "value": "id,question_number,question_text,options,correct_answer" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Enrolled Students",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/students?select=*&limit=25",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "students"],
+              "query": [
+                { "key": "select", "value": "*" },
+                { "key": "limit", "value": "25" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Student by Reg Number",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/students?reg_number=eq.YMO-AIGA-001&select=*",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "students"],
+              "query": [
+                { "key": "reg_number", "value": "eq.YMO-AIGA-001" },
+                { "key": "select", "value": "*" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Candidate Submissions",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/submissions?select=*",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "submissions"],
+              "query": [{ "key": "select", "value": "*" }]
+            }
+          }
+        },
+        {
+          "name": "Create New Student (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Prefer", "value": "return=representation" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reg_number\": \"YMO-AIGA-999\",\n  \"first_name\": \"Test\",\n  \"last_name\": \"Candidate\",\n  \"email\": \"test.candidate@ymo.org\",\n  \"phone\": \"08012345678\",\n  \"primary_track\": \"AIGA\",\n  \"is_active\": 1\n}"
+            },
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/students",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "students"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. YMO CBT Flask App Endpoints (Port 5000)",
+      "item": [
+        {
+          "name": "Candidate Portal Home (GET /)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{flask_url}}/",
+              "host": ["{{flask_url}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "Submit Exam Answers (POST /submit)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exam_id\": 1,\n  \"reg_number\": \"YMO-AIGA-001\",\n  \"first_name\": \"Adebayo\",\n  \"last_name\": \"Ogunlesi\",\n  \"answers\": {\n    \"1\": \"B\",\n    \"2\": \"A\",\n    \"3\": \"C\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{flask_url}}/submit",
+              "host": ["{{flask_url}}"],
+              "path": ["submit"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

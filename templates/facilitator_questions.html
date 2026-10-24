@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Bank & Exam Manager | Facilitator Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #16a34a;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --danger-border: #fecaca;
+      --ai-purple: #7c3aed;
+      --ai-purple-hover: #6d28d9;
+      --gold: #d97706;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .admin-slide-item.slide-hidden {
+      display: none;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1140px; margin: 0 auto; }
+
+    /* Top Navigation */
+    .nav-bar {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+    .nav-brand span { color: #38bdf8; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff;
+      background: #1e293b;
+    }
+    .user-tag {
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-logout {
+      color: #f87171;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border: 1px solid #475569;
+      border-radius: 4px;
+    }
+    .btn-logout:hover { background: #7f1d1d; color: #ffffff; border-color: #ef4444; }
+
+    /* Exam Selector Banner */
+    .exam-selector-bar {
+      background: #ffffff;
+      border: 2px solid #38bdf8;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.12);
+    }
+    .exam-select-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .exam-select-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .exam-dropdown {
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #0f172a;
+      background: #f8fafc;
+      min-width: 280px;
+      outline: none;
+      cursor: pointer;
+    }
+    .exam-dropdown:focus { border-color: var(--primary); }
+
+    /* Header & Quick Action Bar */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .header-title h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .header-title p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .actions-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: var(--primary); color: #ffffff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-ai { background: var(--ai-purple); color: #ffffff; }
+    .btn-ai:hover { background: var(--ai-purple-hover); }
+    .btn-outline { background: #ffffff; border-color: #cbd5e1; color: #334155; }
+    .btn-outline:hover { background: #f1f5f9; }
+    .btn-success { background: var(--success); color: #ffffff; }
+    .btn-success:hover { background: #15803d; }
+
+    /* Alert Banners */
+    .alert-success {
+      background: var(--success-bg);
+      border-left: 4px solid var(--success);
+      color: #065f46;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .alert-error {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    /* KPI Summary Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 18px;
+      border-radius: 10px;
+    }
+    .kpi-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+    .kpi-value { font-size: 26px; font-weight: 800; color: #0f172a; margin-top: 6px; }
+
+    /* Search & Filter Toolbar */
+    .filter-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 14px 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .search-input {
+      padding: 9px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 280px;
+      outline: none;
+    }
+    .search-input:focus { border-color: var(--primary); }
+
+    /* Slider Navigator & View Controls */
+    .view-mode-bar {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      gap: 4px;
+    }
+    .view-mode-btn {
+      background: none;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .view-mode-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(4, 78, 57, 0.2);
+    }
+
+    .slider-track-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .slider-scroll-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      width: 32px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .slider-scroll-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .horizontal-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 4px 2px 6px 2px;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+    .horizontal-slider::-webkit-scrollbar { height: 4px; }
+    .horizontal-slider::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+    .q-pill {
+      min-width: 38px;
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .q-pill:hover { border-color: var(--primary); color: var(--primary); }
+    .q-pill.active {
+      border-color: var(--gold);
+      background: #fffbeb;
+      color: #b45309;
+      box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.35);
+      font-weight: 800;
+      transform: scale(1.05);
+    }
+
+    .slide-stepper-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+
+    /* Question Cards List */
+    .q-list { display: flex; flex-direction: column; gap: 16px; }
+    .q-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      transition: box-shadow 0.15s;
+    }
+    .q-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .q-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .q-num-badge {
+      background: #eff6ff;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .q-text { font-size: 15.5px; font-weight: 600; line-height: 1.45; color: #0f172a; }
+    .q-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .btn-edit {
+      background: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-edit:hover { background: #dbeafe; }
+    .btn-delete {
+      background: #fef2f2;
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-delete:hover { background: #fee2e2; }
+
+    /* Options Display Grid */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .nav-bar { padding: 12px 16px; }
+      .header-bar { flex-direction: column; align-items: stretch; }
+      .actions-group { width: 100%; }
+      .actions-group .btn { flex: 1; justify-content: center; }
+      .kpi-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .filter-bar { flex-direction: column; align-items: stretch; padding: 12px; }
+      .search-input { min-width: 0 !important; width: 100%; }
+      .q-top { flex-direction: column; align-items: stretch; }
+      .q-actions { width: 100%; justify-content: flex-end; margin-top: 8px; }
+      .options-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .kpi-row { grid-template-columns: 1fr; }
+    }
+    .opt-box {
+      border: 1px solid #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #ffffff;
+    }
+    .opt-box.is-correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+      color: #065f46;
+      font-weight: 600;
+    }
+    .opt-letter {
+      font-weight: 700;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .opt-box.is-correct .opt-letter {
+      background: var(--success);
+      color: #ffffff;
+    }
+    .correct-tag {
+      margin-left: auto;
+      font-size: 11px;
+      background: var(--success);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Modal Backdrop & Dialog */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(2px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-dialog {
+      background: #ffffff;
+      border-radius: 12px;
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+      padding: 28px;
+      position: relative;
+    }
+    .modal-title { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
+    .modal-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--primary); }
+    textarea.form-control { resize: vertical; min-height: 80px; }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .btn-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none; border: none;
+      font-size: 22px; cursor: pointer; color: #94a3b8;
+    }
+    .btn-close:hover { color: #0f172a; }
+
+    /* AI Generated Preview Cards */
+    .ai-preview-box {
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 14px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Navigation Bar -->
+  <div class="nav-bar">
+    <div class="nav-brand">
+      <img src="/static/img/ymo_logo.jpg" alt="YMO Logo" style="width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid #d97706; object-fit: cover;">
+      <span>YEYE MOREMI OODUA</span> Facilitator Portal
+    </div>
+    <div class="nav-links">
+      <a href="/instructor" class="nav-link">📊 Candidate Submissions</a>
+      <a href="/facilitator/questions?exam_id={{ current_exam.id }}" class="nav-link active">📝 Questions ({{ questions|length }})</a>
+      <a href="/facilitator/students" class="nav-link">👥 Enrolled Students</a>
+      <button type="button" onclick="openModal('aiModal')" class="nav-link" style="background: none; border: none; cursor: pointer;">🤖 AI Assistant</button>
+      {% if role == 'admin' %}
+      <a href="/facilitator/manage_facilitators" class="nav-link">👨‍🏫 Facilitators &amp; Tracks</a>
+      <button type="button" onclick="openModal('settingsModal')" class="nav-link" style="background: none; border: none; cursor: pointer;">⚙️ Global Settings</button>
+      {% endif %}
+      <a href="/" target="_blank" class="nav-link" style="color: #38bdf8;">🔗 Student View ↗</a>
+    </div>
+    <div class="user-tag">
+      👤 {{ session.get('facilitator_name', 'Facilitator') }}
+      <a href="/facilitator/logout" class="btn-logout">Logout</a>
+    </div>
+  </div>
+
+  <!-- Multi-Exam Switcher Bar -->
+  <div class="exam-selector-bar">
+    <div class="exam-select-group">
+      <span class="exam-select-label">Active Exam:</span>
+      <select class="exam-dropdown" onchange="window.location.href='/facilitator/questions?exam_id='+this.value">
+        {% for e in all_exams %}
+          <option value="{{ e.id }}" {% if e.id == current_exam.id %}selected{% endif %}>
+            [{{ e.course_code if e.course_code else 'EXAM' }}] {{ e.title }} ({{ e.question_count }} Qs • {{ e.duration_minutes }}m)
+          </option>
+        {% endfor %}
+      </select>
+      {% if role != 'admin' %}
+        <button type="button" onclick="openModal('createExamModal')" class="btn btn-success">+ New Assessment</button>
+      {% else %}
+        <a href="/facilitator/manage_facilitators" class="btn btn-primary" style="text-decoration: none;">👨‍🏫 Manage Facilitators &amp; Tracks</a>
+      {% endif %}
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" onclick="openModal('editExamModal')" class="btn btn-outline">✏️ Edit Assessment</button>
+      {% if current_exam.id > 5 %}
+      <form method="POST" action="/facilitator/exams/delete/{{ current_exam.id }}" onsubmit="return confirm('Are you sure you want to delete this assessment and all its questions?');" style="display: inline;">
+        <button type="submit" class="btn" style="background: #fee2e2; color: #dc2626; border-color: #fecaca;">🗑️ Delete</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Header & Quick Actions for Active Exam -->
+  <div class="header-bar">
+    <div class="header-title">
+      <h1>{{ current_exam.title }}</h1>
+      <p>{{ current_exam.cohort if current_exam.cohort else 'Assessment Question Bank' }}</p>
+    </div>
+    <div class="actions-group">
+      <button type="button" onclick="openModal('addModal')" class="btn btn-primary">+ New Question</button>
+      <button type="button" onclick="openModal('aiModal')" class="btn btn-ai">🤖 Question Generator</button>
+      <button type="button" onclick="openModal('rawImportModal')" class="btn btn-outline">📋 Smart Text Parser</button>
+    </div>
+  </div>
+
+  {% if message %}
+    <div class="alert-success">{{ message }}</div>
+  {% endif %}
+  {% if error %}
+    <div class="alert-error">{{ error }}</div>
+  {% endif %}
+
+  <!-- KPI Summary Banner -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Active Questions</div>
+      <div class="kpi-value">{{ questions|length }}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Exam Duration</div>
+      <div class="kpi-value">{{ current_exam.duration_minutes }} <span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">Mins</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Passing Cutoff</div>
+      <div class="kpi-value">{{ current_exam.passing_cutoff }}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Required Score</div>
+      <div class="kpi-value">
+        {% set req_score = ((questions|length * (current_exam.passing_cutoff|float) / 100) | round(0, 'ceil')) | int %}
+        {{ req_score }} <span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">/ {{ questions|length }}</span>
+      </div>
+    </div>
+  </div>
+
+  {% if questions|length > 0 %}
+  <!-- View Mode Selector & Search -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+    <div class="view-mode-selector">
+      <button type="button" id="btnSlideMode" class="view-mode-btn active" onclick="setQuestionViewMode('slide')">🎞️ Slide View</button>
+      <button type="button" id="btnListMode" class="view-mode-btn" onclick="setQuestionViewMode('list')">📋 Full List View</button>
+    </div>
+    <div style="font-size: 13px; color: var(--text-muted);" id="qCountDisplay">Total: {{ questions|length }} questions</div>
+  </div>
+
+  <!-- SLIDE MODE CONTAINER (Default) -->
+  <div id="slideModeContainer">
+    <!-- Horizontal Question Pill Navigator -->
+    <div class="slider-track-wrap">
+      <button type="button" class="slider-scroll-btn" onclick="scrollAdminSlider(-160)" title="Scroll Left">◀</button>
+      <div class="horizontal-slider" id="adminSliderTrack">
+        {% for q in questions %}
+          <div class="q-pill {{ 'active' if loop.first else '' }}" id="admin_pill_{{ loop.index0 }}" data-index="{{ loop.index0 }}" onclick="jumpToAdminSlide(this)">
+            {{ loop.index }}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="slider-scroll-btn" onclick="scrollAdminSlider(160)" title="Scroll Right">▶</button>
+    </div>
+
+    <!-- Active Question Slide Card -->
+    {% for q in questions %}
+    <div class="q-card admin-slide-item {{ '' if loop.first else 'slide-hidden' }}" id="admin_slide_{{ loop.index0 }}" style="border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div class="q-top">
+        <div>
+          <span class="q-num-badge" style="background: #eef2ff; color: var(--primary); font-size: 13px; font-weight: 700;">Question {{ loop.index }} of {{ questions|length }}</span>
+          <div class="q-text" style="font-size: 17px; font-weight: 600; color: #1e293b; margin-top: 8px;">{{ q.question }}</div>
+        </div>
+        <div class="q-actions">
+          <button type="button" 
+                  class="btn-edit" 
+                  data-id="{{ q.id }}"
+                  data-number="{{ q.number }}"
+                  data-question="{{ q.question|forceescape }}"
+                  data-opt-a="{{ q.options.A|forceescape }}"
+                  data-opt-b="{{ q.options.B|forceescape }}"
+                  data-opt-c="{{ q.options.C|forceescape }}"
+                  data-opt-d="{{ q.options.D|forceescape }}"
+                  data-answer="{{ q.answer }}"
+                  onclick="openEditModal(this)">✏️ Edit</button>
+          <form method="POST" action="/facilitator/questions/delete/{{ q.id }}" onsubmit="return confirm('Are you sure you want to delete this question? Remaining questions will be automatically renumbered.');" style="display: inline;">
+            <button type="submit" class="btn-delete">🗑️ Delete</button>
+          </form>
+        </div>
+      </div>
+      <div class="options-grid" style="margin-top: 16px;">
+        {% for opt_key, opt_val in q.options.items() %}
+          <div class="opt-box {{ 'is-correct' if opt_key == q.answer else '' }}">
+            <span class="opt-letter">{{ opt_key }}</span>
+            <span>{{ opt_val }}</span>
+            {% if opt_key == q.answer %}
+              <span class="correct-tag">✓ Correct Key</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Slide Stepper Navigation Row -->
+      <div class="slide-stepper-row">
+        <button type="button" class="btn btn-outline" onclick="stepAdminQuestion(-1)" {% if loop.first %}disabled{% endif %}>
+          ← Previous Question
+        </button>
+        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">
+          Question {{ loop.index }} of {{ questions|length }}
+        </span>
+        <button type="button" class="btn btn-primary" onclick="stepAdminQuestion(1)" {% if loop.last %}disabled{% endif %}>
+          Next Question →
+        </button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- LIST MODE CONTAINER (Toggled on click) -->
+  <div id="listModeContainer" style="display: none;">
+    <div class="filter-bar" style="margin-bottom: 16px;">
+      <input type="text" id="qSearchInput" class="search-input" placeholder="Search questions in this exam by keyword or number..." onkeyup="filterQuestions()">
+    </div>
+    <div class="q-list" id="questionsContainer">
+      {% for q in questions %}
+      <div class="q-card" id="q_card_{{ q.id }}" data-num="{{ q.number }}" data-text="{{ q.question|lower }}">
+        <div class="q-top">
+          <div>
+            <span class="q-num-badge">Question {{ q.number }}</span>
+            <div class="q-text">{{ q.question }}</div>
+          </div>
+          <div class="q-actions">
+            <button type="button" 
+                    class="btn-edit" 
+                    data-id="{{ q.id }}"
+                    data-number="{{ q.number }}"
+                    data-question="{{ q.question|forceescape }}"
+                    data-opt-a="{{ q.options.A|forceescape }}"
+                    data-opt-b="{{ q.options.B|forceescape }}"
+                    data-opt-c="{{ q.options.C|forceescape }}"
+                    data-opt-d="{{ q.options.D|forceescape }}"
+                    data-answer="{{ q.answer }}"
+                    onclick="openEditModal(this)">✏️ Edit</button>
+            <form method="POST" action="/facilitator/questions/delete/{{ q.id }}" onsubmit="return confirm('Are you sure you want to delete this question? Remaining questions will be automatically renumbered.');" style="display: inline;">
+              <button type="submit" class="btn-delete">🗑️ Delete</button>
+            </form>
+          </div>
+        </div>
+        <div class="options-grid">
+          {% for opt_key, opt_val in q.options.items() %}
+            <div class="opt-box {{ 'is-correct' if opt_key == q.answer else '' }}">
+              <span class="opt-letter">{{ opt_key }}</span>
+              <span>{{ opt_val }}</span>
+              {% if opt_key == q.answer %}
+                <span class="correct-tag">✓ Correct Key</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% else %}
+  <div style="background: white; padding: 48px; border-radius: 10px; text-align: center; color: var(--text-muted); border: 1px dashed #cbd5e1; margin-top: 16px;">
+    <div style="font-size: 16px; font-weight: 700; color: #334155; margin-bottom: 8px;">
+      No questions created yet
+    </div>
+    <div style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+      This assessment track currently has no questions. Click below to add questions or generate them with AI.
+    </div>
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+      <button type="button" onclick="openModal('addModal')" class="btn btn-primary">+ New Question</button>
+      <button type="button" onclick="openModal('aiModal')" class="btn btn-ai">🤖 Question Generator</button>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- ================= MODAL: CREATE NEW EXAM ================= -->
+<div class="modal-backdrop" id="createExamModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('createExamModal')">&times;</button>
+    <div class="modal-title">✨ Create New Assessment</div>
+    <div class="modal-desc">Create another assessment track for any course (e.g. Quiz 1, Mid-Term CBT, Final Exam).</div>
+
+    <form method="POST" action="/facilitator/exams/create">
+      <div class="form-group">
+        <label>Course Track</label>
+        <select name="course_code" class="form-control" required style="font-weight: 700; color: var(--primary);">
+          <option value="AIGA" {% if current_exam.course_code == 'AIGA' or current_exam.id == 1 %}selected{% endif %}>Artificial Intelligence and Generative AI (AIGA)</option>
+          <option value="DL" {% if current_exam.course_code == 'DL' or current_exam.id == 2 %}selected{% endif %}>Digital Literacy (DL)</option>
+          <option value="GDCC" {% if current_exam.course_code == 'GDCC' or current_exam.id == 3 %}selected{% endif %}>Graphic Design and Content Creation (GDCC)</option>
+          <option value="CP" {% if current_exam.course_code == 'CP' or current_exam.id == 4 %}selected{% endif %}>Coding and Programming (CP)</option>
+          <option value="DM" {% if current_exam.course_code == 'DM' or current_exam.id == 5 %}selected{% endif %}>Digital Marketing and Social Media (DM)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Assessment Title</label>
+        <input type="text" name="title" class="form-control" required placeholder="e.g. Digital Literacy — Module 2 Quiz or Mid-Term Assessment">
+      </div>
+
+      <div class="form-group">
+        <label>Cohort / Subtitle</label>
+        <input type="text" name="cohort" class="form-control" placeholder="e.g. Weeks 3 & 4 Objective CBT">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label>Timer Duration (Minutes)</label>
+          <input type="number" name="duration_minutes" class="form-control" min="5" max="300" value="45" required>
+        </div>
+        <div class="form-group">
+          <label>Passing Cutoff (%)</label>
+          <input type="number" step="0.1" name="passing_cutoff" class="form-control" min="10" max="100" value="85.0" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Candidate Instructions</label>
+        <textarea name="instructions" class="form-control" rows="2">Choose the single best answer (A, B, C, or D). Each question carries one mark.</textarea>
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+        <input type="checkbox" id="isActiveCheck" name="is_active" value="1" checked style="width: auto;">
+        <label for="isActiveCheck" style="margin-bottom: 0; text-transform: none; cursor: pointer;">Active (Make visible on student choice menu immediately)</label>
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" id="autoAssignStudents" name="auto_assign_students" value="1" checked style="width: auto;">
+        <label for="autoAssignStudents" style="margin-bottom: 0; text-transform: none; cursor: pointer;">Automatically grant access to all students enrolled in this course</label>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('createExamModal')">Cancel</button>
+        <button type="submit" class="btn btn-success">Create Assessment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: EDIT CURRENT EXAM ================= -->
+<div class="modal-backdrop" id="editExamModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('editExamModal')">&times;</button>
+    <div class="modal-title">✏️ Edit Assessment</div>
+    <div class="modal-desc">Modify parameters for <strong>{{ current_exam.title }}</strong>.</div>
+
+    <form method="POST" action="/facilitator/exams/edit/{{ current_exam.id }}">
+      <div class="form-group">
+        <label>Course Track</label>
+        <select name="course_code" class="form-control" required style="font-weight: 700; color: var(--primary);">
+          <option value="AIGA" {% if current_exam.course_code == 'AIGA' or current_exam.id == 1 %}selected{% endif %}>Artificial Intelligence and Generative AI (AIGA)</option>
+          <option value="DL" {% if current_exam.course_code == 'DL' or current_exam.id == 2 %}selected{% endif %}>Digital Literacy (DL)</option>
+          <option value="GDCC" {% if current_exam.course_code == 'GDCC' or current_exam.id == 3 %}selected{% endif %}>Graphic Design and Content Creation (GDCC)</option>
+          <option value="CP" {% if current_exam.course_code == 'CP' or current_exam.id == 4 %}selected{% endif %}>Coding and Programming (CP)</option>
+          <option value="DM" {% if current_exam.course_code == 'DM' or current_exam.id == 5 %}selected{% endif %}>Digital Marketing and Social Media (DM)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Assessment Title</label>
+        <input type="text" name="title" class="form-control" value="{{ current_exam.title }}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Cohort / Subtitle</label>
+        <input type="text" name="cohort" class="form-control" value="{{ current_exam.cohort }}">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label>Timer Duration (Minutes)</label>
+          <input type="number" name="duration_minutes" class="form-control" min="5" max="300" value="{{ current_exam.duration_minutes }}" required>
+        </div>
+        <div class="form-group">
+          <label>Passing Cutoff (%)</label>
+          <input type="number" step="0.1" name="passing_cutoff" class="form-control" min="10" max="100" value="{{ current_exam.passing_cutoff }}" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Candidate Instructions</label>
+        <textarea name="instructions" class="form-control" rows="2">{{ current_exam.instructions }}</textarea>
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+        <input type="checkbox" id="editIsActiveCheck" name="is_active" value="1" {% if current_exam.is_active == 1 %}checked{% endif %} style="width: auto;">
+        <label for="editIsActiveCheck" style="margin-bottom: 0; text-transform: none; cursor: pointer;">Active (Visible on student choice menu)</label>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('editExamModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: ADD QUESTION ================= -->
+<div class="modal-backdrop" id="addModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('addModal')">&times;</button>
+    <div class="modal-title">+ Add Question to {{ current_exam.title }}</div>
+    <div class="modal-desc">Create a new 4-option multiple choice question and set its correct answer key.</div>
+
+    <form method="POST" action="/facilitator/questions/add">
+      <input type="hidden" name="exam_id" value="{{ current_exam.id }}">
+
+      <div class="form-group">
+        <label>Question Text</label>
+        <textarea name="question" class="form-control" rows="3" required placeholder="Enter the complete question prompt..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Option A</label>
+        <input type="text" name="opt_a" class="form-control" required placeholder="Option A text">
+      </div>
+      <div class="form-group">
+        <label>Option B</label>
+        <input type="text" name="opt_b" class="form-control" required placeholder="Option B text">
+      </div>
+      <div class="form-group">
+        <label>Option C</label>
+        <input type="text" name="opt_c" class="form-control" required placeholder="Option C text">
+      </div>
+      <div class="form-group">
+        <label>Option D</label>
+        <input type="text" name="opt_d" class="form-control" required placeholder="Option D text">
+      </div>
+
+      <div class="form-group">
+        <label>Correct Answer Key</label>
+        <select name="answer" class="form-control" required style="font-weight: 700; color: var(--primary);">
+          <option value="A">Option A</option>
+          <option value="B">Option B</option>
+          <option value="C">Option C</option>
+          <option value="D">Option D</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('addModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Question to Exam</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: EDIT QUESTION ================= -->
+<div class="modal-backdrop" id="editModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('editModal')">&times;</button>
+    <div class="modal-title">✏️ Edit Question <span id="editQNumDisplay"></span></div>
+    <div class="modal-desc">Update the question prompt, distractors, or designated answer key.</div>
+
+    <form id="editForm" method="POST" action="">
+      <input type="hidden" name="exam_id" value="{{ current_exam.id }}">
+
+      <div class="form-group">
+        <label>Question Text</label>
+        <textarea id="editQuestionText" name="question" class="form-control" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Option A</label>
+        <input type="text" id="editOptA" name="opt_a" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Option B</label>
+        <input type="text" id="editOptB" name="opt_b" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Option C</label>
+        <input type="text" id="editOptC" name="opt_c" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Option D</label>
+        <input type="text" id="editOptD" name="opt_d" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label>Correct Answer Key</label>
+        <select id="editAnswerKey" name="answer" class="form-control" required style="font-weight: 700; color: var(--primary);">
+          <option value="A">Option A</option>
+          <option value="B">Option B</option>
+          <option value="C">Option C</option>
+          <option value="D">Option D</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('editModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: AI QUESTION GENERATOR ================= -->
+<div class="modal-backdrop" id="aiModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('aiModal')">&times;</button>
+    <div class="modal-title">🤖 Question Generator</div>
+    <div class="modal-desc">Target Exam: <strong>{{ current_exam.title }}</strong>. Prompt Gemini to author curriculum-aligned multiple choice questions.</div>
+
+    <form id="aiGenForm" onsubmit="handleAiGenerate(event)">
+      <div class="form-group">
+        <label>Topic / Concept</label>
+        <input type="text" id="aiTopic" class="form-control" required placeholder="e.g. SEO Keyword Research and Search Intent">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label>Questions Count</label>
+          <input type="number" id="aiCount" class="form-control" min="1" max="10" value="3" required>
+        </div>
+        <div class="form-group">
+          <label>Difficulty Level</label>
+          <select id="aiDifficulty" class="form-control">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate" selected>Intermediate</option>
+            <option value="Advanced">Advanced / Scenario-based</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Course Context / Notes (Optional)</label>
+        <textarea id="aiContext" class="form-control" rows="2" placeholder="Paste specific lecture guidelines or topic specifics..."></textarea>
+      </div>
+
+      <div id="aiStatusMessage" style="display: none; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px;"></div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('aiModal')">Close</button>
+        <button type="submit" id="aiSubmitBtn" class="btn btn-ai">
+          <span id="aiBtnText">✨ Generate with Gemini AI</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- AI Preview Container -->
+    <div id="aiPreviewArea" style="display: none; margin-top: 16px;">
+      <h4 style="font-size: 14px; font-weight: 700; color: var(--ai-purple); margin-bottom: 8px;">Generated Questions Preview:</h4>
+      <div id="aiPreviewList" class="ai-preview-box"></div>
+      <form method="POST" action="/facilitator/ai/batch_insert" style="margin-top: 12px; text-align: right;">
+        <input type="hidden" name="exam_id" value="{{ current_exam.id }}">
+        <input type="hidden" id="aiJsonPayload" name="questions_json">
+        <button type="submit" class="btn btn-primary">➕ Import All into {{ current_exam.title }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL: SMART TEXT PARSER ================= -->
+<div class="modal-backdrop" id="rawImportModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('rawImportModal')">&times;</button>
+    <div class="modal-title">📋 Smart Text / Bulk Import</div>
+    <div class="modal-desc">Target Exam: <strong>{{ current_exam.title }}</strong>. Paste raw questions from Word, PDF, or chat to extract MCQs automatically.</div>
+
+    <form method="POST" action="/facilitator/ai/parse">
+      <input type="hidden" name="exam_id" value="{{ current_exam.id }}">
+
+      <div class="form-group">
+        <label>Raw Formatted Text</label>
+        <textarea name="raw_text" class="form-control" rows="10" required placeholder="Example:
+1. What does CTA stand for?
+A. Call to Action
+B. Click to Apply
+C. Cost to Acquire
+D. Customer Trust Analysis
+Answer: A"></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('rawImportModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">🚀 Parse & Import to This Exam</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: GLOBAL SETTINGS ================= -->
+<div class="modal-backdrop" id="settingsModal">
+  <div class="modal-dialog">
+    <button type="button" class="btn-close" onclick="closeModal('settingsModal')">&times;</button>
+    <div class="modal-title">⚙️ Training Hub & AI Settings</div>
+    <div class="modal-desc">Configure global organization details and your Google Gemini AI API key.</div>
+
+    <form method="POST" action="/facilitator/settings">
+      <input type="hidden" name="current_exam_id" value="{{ current_exam.id }}">
+
+      <div class="form-group">
+        <label>Training Hub Organization Name</label>
+        <input type="text" name="hub_name" class="form-control" value="{{ settings.hub_name }}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Google Gemini API Key (For AI Assistant)</label>
+        <input type="password" name="gemini_api_key" class="form-control" value="{{ settings.gemini_api_key }}" placeholder="AIzaSy...">
+        <span style="font-size: 11.5px; color: var(--text-muted); display: block; margin-top: 4px;">
+          Free API keys can be obtained from <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--primary);">Google AI Studio</a>.
+        </span>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('settingsModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add("open");
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove("open");
+  }
+
+  function openEditModal(btnOrObj) {
+    if (btnOrObj instanceof HTMLElement) {
+      const btn = btnOrObj;
+      const qId = btn.getAttribute("data-id");
+      const qNum = btn.getAttribute("data-number");
+      document.getElementById("editQNumDisplay").textContent = `(Q${qNum})`;
+      document.getElementById("editForm").action = `/facilitator/questions/edit/${qId}`;
+      document.getElementById("editQuestionText").value = btn.getAttribute("data-question") || "";
+      document.getElementById("editOptA").value = btn.getAttribute("data-opt-a") || "";
+      document.getElementById("editOptB").value = btn.getAttribute("data-opt-b") || "";
+      document.getElementById("editOptC").value = btn.getAttribute("data-opt-c") || "";
+      document.getElementById("editOptD").value = btn.getAttribute("data-opt-d") || "";
+      document.getElementById("editAnswerKey").value = btn.getAttribute("data-answer") || "A";
+    } else {
+      const q = btnOrObj;
+      document.getElementById("editQNumDisplay").textContent = `(Q${q.number})`;
+      document.getElementById("editForm").action = `/facilitator/questions/edit/${q.id}`;
+      document.getElementById("editQuestionText").value = q.question;
+      document.getElementById("editOptA").value = (q.options && q.options.A) || "";
+      document.getElementById("editOptB").value = (q.options && q.options.B) || "";
+      document.getElementById("editOptC").value = (q.options && q.options.C) || "";
+      document.getElementById("editOptD").value = (q.options && q.options.D) || "";
+      document.getElementById("editAnswerKey").value = q.answer || "A";
+    }
+    openModal("editModal");
+  }
+
+  let currentSlideIdx = 0;
+
+  function setQuestionViewMode(mode) {
+    const slideBox = document.getElementById('slideModeContainer');
+    const listBox = document.getElementById('listModeContainer');
+    const btnSlide = document.getElementById('btnSlideMode');
+    const btnList = document.getElementById('btnListMode');
+    if (!slideBox || !listBox) return;
+    if (mode === 'slide') {
+      slideBox.style.display = 'block';
+      listBox.style.display = 'none';
+      if (btnSlide) btnSlide.classList.add('active');
+      if (btnList) btnList.classList.remove('active');
+    } else {
+      slideBox.style.display = 'none';
+      listBox.style.display = 'block';
+      if (btnSlide) btnSlide.classList.remove('active');
+      if (btnList) btnList.classList.add('active');
+    }
+  }
+
+  function jumpToAdminSlide(target) {
+    const slides = document.querySelectorAll('.admin-slide-item');
+    const total = slides.length;
+    let idx = (typeof target === 'number') ? target : parseInt(target.getAttribute('data-index') || target, 10);
+    if (isNaN(idx) || idx < 0 || idx >= total) return;
+    const pills = document.querySelectorAll('.horizontal-slider .q-pill');
+    slides.forEach((s, i) => {
+      s.style.display = (i === idx) ? 'block' : 'none';
+    });
+    pills.forEach((p, i) => {
+      if (i === idx) {
+        p.classList.add('active');
+        p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        p.classList.remove('active');
+      }
+    });
+    currentSlideIdx = idx;
+  }
+
+  function stepAdminQuestion(delta) {
+    const total = document.querySelectorAll('.admin-slide-item').length;
+    const nextIdx = currentSlideIdx + delta;
+    if (nextIdx >= 0 && nextIdx < total) {
+      jumpToAdminSlide(nextIdx);
+    }
+  }
+
+  function scrollAdminSlider(offset) {
+    const track = document.getElementById('adminSliderTrack');
+    if (track) track.scrollBy({ left: offset, behavior: 'smooth' });
+  }
+
+  function filterQuestions() {
+    const input = document.getElementById("qSearchInput").value.toLowerCase();
+    const cards = document.querySelectorAll("#questionsContainer .q-card");
+    let visible = 0;
+
+    cards.forEach(card => {
+      const text = card.getAttribute("data-text") || "";
+      const num = card.getAttribute("data-num") || "";
+      if (text.includes(input) || num.includes(input)) {
+        card.style.display = "block";
+        visible++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    const disp = document.getElementById("qCountDisplay");
+    if (disp) disp.textContent = `Showing ${visible} of ${cards.length} questions`;
+  }
+
+  async function handleAiGenerate(e) {
+    e.preventDefault();
+    const topic = document.getElementById("aiTopic").value.trim();
+    const count = document.getElementById("aiCount").value;
+    const difficulty = document.getElementById("aiDifficulty").value;
+    const context = document.getElementById("aiContext").value.trim();
+
+    const statusBox = document.getElementById("aiStatusMessage");
+    const submitBtn = document.getElementById("aiSubmitBtn");
+    const btnText = document.getElementById("aiBtnText");
+
+    statusBox.style.display = "none";
+    submitBtn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> Consulting Gemini AI...';
+
+    try {
+      const resp = await fetch("/facilitator/ai/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic, count, difficulty, context })
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok || !data.success) {
+        throw new Error(data.error || "Generation failed");
+      }
+
+      const listEl = document.getElementById("aiPreviewList");
+      listEl.innerHTML = "";
+      data.questions.forEach((q, idx) => {
+        listEl.innerHTML += `
+          <div style="margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e9d5ff;">
+            <strong>${idx + 1}. ${q.question}</strong><br>
+            <span style="font-size: 13px; color: #475569;">
+              A: ${q.opt_a} | B: ${q.opt_b} | C: ${q.opt_c} | D: ${q.opt_d}
+            </span><br>
+            <span style="font-size: 12px; color: #16a34a; font-weight: 700;">Correct Answer: Option ${q.answer}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById("aiJsonPayload").value = JSON.stringify(data.questions);
+      document.getElementById("aiPreviewArea").style.display = "block";
+
+      statusBox.style.display = "block";
+      statusBox.style.background = "#ecfdf5";
+      statusBox.style.color = "#065f46";
+      statusBox.textContent = `🎉 Generated ${data.questions.length} questions! Click 'Import All' to add to this exam.`;
+    } catch (err) {
+      statusBox.style.display = "block";
+      statusBox.style.background = "#fef2f2";
+      statusBox.style.color = "#991b1b";
+      statusBox.textContent = "Error: " + err.message;
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = "✨ Generate with Gemini AI";
+    }
+  }
+</script>
+
+</body>
+</html>
