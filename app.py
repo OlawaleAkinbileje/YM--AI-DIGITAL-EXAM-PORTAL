@@ -344,13 +344,22 @@ def exam():
     questions = db.get_questions_by_exam(exam_id)
     return render_template('cbt_question.html', questions=questions, settings=exam)
 
+@app.route('/submit', methods=['POST'])
 @app.route('/submit_exam', methods=['POST'])
 def submit_exam():
-    form_data = request.form.to_dict()
+    if request.is_json:
+        form_data = request.get_json() or {}
+        if "answers" in form_data and isinstance(form_data["answers"], dict):
+            flat = dict(form_data)
+            flat.update(form_data["answers"])
+            form_data = flat
+    else:
+        form_data = request.form.to_dict()
+
     first_name = form_data.get('first_name') or session.get('first_name', 'Unknown')
     last_name = form_data.get('last_name') or session.get('last_name', 'Candidate')
     reg_number = form_data.get('reg_number') or session.get('reg_number')
-    exam_id = int(session.get('exam_id', 1))
+    exam_id = int(form_data.get('exam_id') or session.get('exam_id', 1))
 
     exam = db.get_exam(exam_id) or {"title": "Assessment", "passing_cutoff": 85.0}
 
@@ -358,6 +367,12 @@ def submit_exam():
     current_attempt_num = len(previous_attempts) + 1
 
     if current_attempt_num > MAX_ATTEMPTS:
+        if request.is_json:
+            return jsonify({
+                "status": "error",
+                "message": "Maximum exam attempts reached",
+                "max_attempts": MAX_ATTEMPTS
+            }), 403
         return redirect(url_for('index'))
 
     # Grade submission dynamically against the specific exam's questions
@@ -376,6 +391,23 @@ def submit_exam():
     passed_overall = best_percentage >= cutoff
 
     can_retake = (current_attempt_num < MAX_ATTEMPTS)
+
+    if request.is_json or request.headers.get('Accept') == 'application/json':
+        return jsonify({
+            "status": "success",
+            "first_name": first_name,
+            "last_name": last_name,
+            "reg_number": reg_number,
+            "exam_id": exam_id,
+            "exam_title": exam.get('title'),
+            "score": score,
+            "total": total,
+            "percentage": percentage,
+            "passed": passed,
+            "passed_overall": passed_overall,
+            "attempt_number": current_attempt_num,
+            "can_retake": can_retake
+        }), 200
 
     # Fetch full student profile
     student = None

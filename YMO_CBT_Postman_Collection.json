@@ -43,6 +43,25 @@
           }
         },
         {
+          "name": "Get Questions (All Fields)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "apikey", "value": "{{supabase_anon_key}}" },
+              { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
+            ],
+            "url": {
+              "raw": "{{supabase_url}}/rest/v1/questions?select=*&limit=25",
+              "host": ["{{supabase_url}}"],
+              "path": ["rest", "v1", "questions"],
+              "query": [
+                { "key": "select", "value": "*" },
+                { "key": "limit", "value": "25" }
+              ]
+            }
+          }
+        },
+        {
           "name": "Get Questions by Exam ID",
           "request": {
             "method": "GET",
@@ -51,12 +70,12 @@
               { "key": "Authorization", "value": "Bearer {{supabase_anon_key}}" }
             ],
             "url": {
-              "raw": "{{supabase_url}}/rest/v1/questions?exam_id=eq.1&select=id,question_number,question_text,options,correct_answer",
+              "raw": "{{supabase_url}}/rest/v1/questions?exam_id=eq.3&select=id,exam_id,q_num,question,opt_a,opt_b,opt_c,opt_d,answer",
               "host": ["{{supabase_url}}"],
               "path": ["rest", "v1", "questions"],
               "query": [
-                { "key": "exam_id", "value": "eq.1" },
-                { "key": "select", "value": "id,question_number,question_text,options,correct_answer" }
+                { "key": "exam_id", "value": "eq.3" },
+                { "key": "select", "value": "id,exam_id,q_num,question,opt_a,opt_b,opt_c,opt_d,answer" }
               ]
             }
           }
@@ -157,7 +176,8 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Content-Type", "value": "application/json" }
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
             ],
             "body": {
               "mode": "raw",
