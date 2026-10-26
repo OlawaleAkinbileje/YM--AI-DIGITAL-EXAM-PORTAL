@@ -265,32 +265,6 @@
       transform: translateY(-1px);
     }
 
-    .demo-hint {
-      background: #f8fafc;
-      border: 1px dashed #cbd5e1;
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      color: #475569;
-      margin-top: 18px;
-      line-height: 1.6;
-    }
-    .btn-autofill {
-      display: inline-block;
-      margin-top: 6px;
-      margin-right: 4px;
-      background: #ecfdf5;
-      color: var(--ymo-green);
-      border: 1px solid #a7f3d0;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .btn-autofill:hover { background: #d1fae5; }
-
     .footer-links {
       text-align: center;
       margin-top: 18px;
@@ -383,14 +357,6 @@
       <button type="submit" class="btn-login">Sign In to Dashboard</button>
     </form>
 
-    <div class="demo-hint">
-      <strong>🔑 Default Staff Accounts:</strong><br>
-      • <strong>Administrator:</strong> <code>admin</code> / <code>admin123</code> (System Oversight &amp; Roster Control)<br>
-      • <strong>Course Instructor:</strong> <code>instructor sparrow</code> (Olawale Emmanuel)<br>
-      <button type="button" class="btn-autofill" onclick="autoFill('admin', 'admin123')">⚡ Auto-Fill Admin</button>
-      <button type="button" class="btn-autofill" onclick="autoFill('instructor sparrow', '')">⚡ Auto-Fill Instructor Username</button>
-    </div>
-
     <div class="footer-links">
       New facilitator? <a href="/facilitator/register">Create an account</a><br><br>
       <a href="/" style="color: #64748b; font-weight: 500;">← Return to Candidate Exam Portal</a>
@@ -400,11 +366,6 @@
 </div>
 
 <script>
-  function autoFill(u, p) {
-    document.getElementById("username").value = u;
-    document.getElementById("password").value = p;
-  }
-
   function togglePasswordVisibility() {
     const pwdInput = document.getElementById("password");
     const btn = event.target;
